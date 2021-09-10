@@ -27,18 +27,18 @@
 .main_header_button {
 	margin: 0 1rem;
 	padding: .7rem 1.5rem;
-	background: white;
+	background: var(--main-textAlternate);;
 	border: none;
 	border-radius: .4rem;
 	cursor: pointer;
-	color: rgb(253, 45, 118);
+	color: var(--main-backgroundNormal);
 	font-size: 1rem;
 	font-weight: bold;
 }
 
 .main_header_button:hover {
-	background: linear-gradient(90deg, rgb(253,45,118,1) 35%, rgb(255,109,89,1) 100%);
-	color: white;
+	background: linear-gradient(90deg, var(--main-backgroundNormal) 35%, var(--main-backgroundAlternate) 100%);
+	color: var(--main-textAlternate);
 }
 
 .main_body {
@@ -52,13 +52,13 @@
 }
 
 .main_body_text {
-	font-size: 13vw;
-	font-weight: bold;
+	font-size: 10vw;
+	font-weight: 500;
 }
 
 .main_body_button {
-	background: linear-gradient(90deg, rgb(253,45,118) 35%, rgb(255,109,89) 100%);
-	color: white;
+	background: linear-gradient(90deg, var(--main-backgroundNormal) 35%, var(--main-backgroundAlternate) 100%);
+	color: var(--main-textAlternate);
 	height: 3.4rem;
 	width: 16rem;
 	border: none;
@@ -66,7 +66,6 @@
 	cursor: pointer;
 	font-size: 1rem;
 	font-weight: bold;
-	transition: 3s;
 }
 
 .main_body_button:hover {
