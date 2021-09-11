@@ -14,23 +14,47 @@
 .login_window {
 	display: flex;
 	flex-direction: column;
-	height: 40rem;
-	width: 30rem;
+	align-items: center;
+	justify-content: space-between;
+	height: 35rem;
+	width: 25rem;
 	border-radius: .7rem;
 	background: rgb(255, 255, 255);
 }
 
-.sign_form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.login_window_h {
+	margin: 1.5rem 0 0 0;
+	color: var(--main-textNormal);
+	font-size: 3rem;
+}
+
+.login_window_text {
+	margin: 1rem;
+	color: var(--main-backgroundNormal);
+	font-size: 2rem;
 }
 
 .sign_input {
-	width: 25rem;
+	display: flex;
+	align-items: center;
+	margin: 1rem;
+	padding: 1rem 1rem;
+	width: 19rem;
 	border: 1px solid black;
 	border-radius: 3rem;
-	padding: 1rem;
-	font-size: 2rem;
-	
+	font-size: 1.5rem;
+}
+
+.sign_send  {
+	display: flex;
+	align-items: center;
+	margin: 0 0 2rem 0;
+	padding: .5rem;
+	width: 15rem;
+	border: none;
+	border-radius: 3rem;
+	font-size: 1.5rem;
+	background: linear-gradient(90deg, var(--main-backgroundNormal) 35%, var(--main-backgroundAlternate) 100%);
+	color: var(--main-textAlternate);
+	cursor: pointer;
 }

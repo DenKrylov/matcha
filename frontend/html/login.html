@@ -27,13 +27,14 @@
 			</div>
 			<div class="login">
 				<div class="login_window">
-					<h2>matcha</h2>
-					<p>Создать аккаунт</p>
+					<h2 class="login_window_h">matcha</h2>
+					<p class="login_window_text">Создать аккаунт</p>
 					<form  class="sign_form" id="sing_form">
 						<input class="sign_input" type="text" name="login" autofocus autocomplete="off" v-bind:class="vTeme('sign_input')">
 						<input class="sign_input" type="password" name="password" v-bind:class="vTeme('sign_input')">
+						<input class="sign_input" type="password" name="password" v-bind:class="vTeme('sign_input')">
 					</form>
-					<input class="sign_send" type="submit" form="test" value="SIGN IN" v-on:click="checkLogin()" v-bind:class="vTeme('sign_send')">
+					<input class="sign_send" type="submit" form="test" value="СОЗДАТЬ" v-on:click="checkLogin()" v-bind:class="vTeme('sign_send')">
 				</div>
 			</div>
 		</div>
