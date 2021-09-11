@@ -1,0 +1,258 @@
+@media screen and (max-width: 80rem) {
+    .data {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 50rem) {
+    .nav {
+        display: none;
+    }
+}
+
+.chat {
+	color: black;
+	display: flex;
+	height: 100%;
+}
+
+/* ----------------------------------------------------- */
+/* ------------------nav-------------------------------- */
+/* ----------------------------------------------------- */
+
+.nav {
+	width: 25rem;
+	border-right: 3px solid var(--main-background);
+}
+
+/* ------------------nav_header------------------------- */
+
+.nav_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 4.5rem;
+	background: var(--main-fill);
+}
+
+.nav_logo {
+	display: flex;
+	align-items: center;
+	margin: 0 0 0 1rem;
+	padding: .1rem .5rem;
+	height: 2.5rem;
+	border-radius: 3rem;
+}
+
+.nav_logo:hover {
+	background: var(--main-bg-blackout3);
+	cursor: pointer;
+}
+
+.nav_logoH {
+	margin: 0 0 0 1rem;
+	color: var(--main-text-light);
+}
+
+.nav_headerButton {
+	display: flex;
+	align-items: center;
+	margin: 0 1rem 0 0;
+	padding: .5rem;
+	border-radius: 100%;
+	background: var(--main-bg-blackout3);
+}
+
+.nav_headerButton:hover {
+	filter: brightness(80%);
+	background: var(--main-bg-blackout7);
+}
+
+.nav_headerButton:hover {
+	background: var(--main-bg-blackout3);
+	cursor: pointer;
+}
+
+.nav_logoAvatarka {
+	height: 2rem;
+	border-radius: 100%;
+}
+
+.nav_logoH {
+	color: var()
+}
+
+/* ------------------nav_body--------------------------- */
+
+.nav_body {
+	display: flex;
+	flex-direction: column;
+}
+
+.nav_body_windowСouples {
+	display: none;
+}
+
+.nav_body_choice {
+	display: flex;
+	align-items: center;
+	height: 4rem;
+}
+
+.nav_body_choiceText {
+	margin: 0 0 0 3rem;
+	font-weight: 500;
+	color: var(--main-text-dark);
+}
+
+.nav_body_choiceText:hover {
+	cursor: pointer
+}
+
+.nav_card {
+	margin: .5rem;
+	position: relative;
+	height: 9rem;
+	width: 7rem;
+}
+
+.nav_cardImg {
+	height: 100%;
+	width: 100%;
+	border-radius: .3rem;
+}
+
+.nav_cardName {
+	position: absolute;
+	left: 1rem;
+	bottom: .5rem;
+	font-size: 1.5rem;
+	color: var(--main-text-light);
+}
+
+.nav_body_windowChat {
+	background: var(--main-bg-grey);
+}
+
+.nav_chat {
+	display: flex;
+	align-items: center;
+	height: 6rem;
+}
+
+.nav_chatImg {
+	height: 5rem;
+	border-radius: 100%;
+	margin: 0 1.5rem;
+}
+
+.nav_footer {
+	height: 3rem;
+}
+
+/* ------------------nav-------------------------------- */
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* ------------------dialog----------------------------- */
+
+.dialog {
+	flex: 10 0 auto;
+	display: flex;
+	flex-direction: column;
+	border-left: 1px solid var(--main-bg-blackout3);
+	border-right: 1px solid var(--main-bg-blackout3);
+}
+
+/* ------------------dialog_header---------------------- */
+
+.dialog_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1.5rem;
+	height: 6rem;
+	border-bottom: 1px solid var(--main-bg-blackout3);
+}
+
+.dialog_headerInfo {
+	display: flex;
+	align-items: center;
+}
+
+.dialog_headerImg {
+	height: 3.5rem;
+	border: 31px solid var(blue);
+	border-radius: 100%;
+}
+
+.dialog_headerText {
+	color: var(--main-text-gray);
+	margin: 0 0 0 1rem;
+}
+
+.dialog_body {
+	flex: 10 0 auto;
+}
+
+.dialog_footer {
+	height: 4.5rem;
+	border-top: 1px solid var(--main-bg-blackout3);
+}
+
+/* ------------------dialog----------------------------- */
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* ------------------data------------------------------- */
+
+.data {
+	width: 30rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.data_body {
+	flex: 1 0 auto;
+}
+
+.data_footer {
+	display: flex;
+	height: 4.5rem;
+	border-top: 1px solid var(--main-bg-blackout3);
+}
+
+.data_footerButton{
+	width: 100%;
+	border: none;
+	background: var(--main-bg-grey);
+	color: var(--main-text-dark);
+	font-size: .9rem;
+	font-weight: bold;
+}
+
+.data_footerButton:first-child {
+	border-right: 1px solid var(--main-bg-blackout3);
+}
+
+.data_footerButton:hover {
+	background: var(--main-fill);
+	color: var(--main-text-light);
+	border: none;
+}
+
+/* ------------------data------------------------------- */
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+/* ------------------util------------------------------- */
+
+.close_window {
+	height: 2.5rem;
+	cursor: pointer;
+	border-radius: 100%;
+	-webkit-transition: -webkit-transform .3s ease-in-out;
+			transition:         transform .3s ease-in-out;
+}
+
+.close_window:hover {
+	-webkit-transform: rotate(-90deg);
+			transform: rotate(-90deg);
+}
