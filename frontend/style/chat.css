@@ -238,11 +238,15 @@
 	border-radius: 100%;
 }
 
-.message_text_my {
-	background: var(--main-bg-chat-blue);
-	color: var(--main-text-light);
+.message_text {
 	margin: .2rem;
 	padding: .5rem 1.5rem;
+	user-select: text;
+}
+
+.message_text__my {
+	background: var(--main-bg-chat-blue);
+	color: var(--main-text-light);
 	border-radius: 1rem .3rem .3rem 1rem;
 }
 
@@ -250,12 +254,20 @@
 	border-radius: 1rem 1rem .3rem 1rem;
 }
 
-.message_text_ohter {
+.message_text__ohter {
 	background: var(--main-bg-grey);
 	color: var(--main-text-dark);
-	margin: .2rem;
-	padding: .5rem 1.5rem;
 	border-radius: .3rem 1rem 1rem .3rem;
+}
+
+.message_text::selection {
+    color: var(--main-text-light);
+	background: var(--main-bg-pink);
+}
+
+.message_text_my::selection {
+    color: var(--main-text-light);
+	background: var(--main-bg-pink);
 }
 
 .message_lenta .message_text_ohter:first-child {
@@ -282,6 +294,10 @@
 	font-weight: 600;
 	border: none;
 	border-radius: 1rem;
+}
+
+.massage_send__active {
+	background: var(--main-fill);
 }
 
 /* ------------------dialog----------------------------- */
