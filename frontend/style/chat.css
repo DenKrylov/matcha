@@ -134,6 +134,15 @@
 	display: flex;
 	align-items: center;
 	height: 6rem;
+	box-sizing: border-box;
+}
+
+.nav_chat:hover {
+	border-right: .4rem solid var(--main-bg-pink);
+	border-top: 1px solid var(--main-border);
+	border-bottom: 1px solid var(--main-border);
+	box-shadow: 0 0 5px var(--main-bg-blackout3);
+	cursor: pointer;
 }
 
 .nav_chat__active {
@@ -194,13 +203,85 @@
 	margin: 0 0 0 1rem;
 }
 
+
 .dialog_body {
 	flex: 10 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.message {
+	display: flex;
+	align-items: center;
+}
+
+.message_my {
+	justify-content: end;
+}
+
+.message_other {
+	justify-content: start;
+}
+
+.message_lenta {
+	display: flex;
+	flex-direction: column;
+	margin: .5rem 1rem .5rem .5rem;
+}
+
+.message_avatarka {
+	display: flex;
+	align-self: end;
+	margin: .5rem 0 .5rem 1.5rem ;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 100%;
+}
+
+.message_text_my {
+	background: var(--main-bg-chat-blue);
+	color: var(--main-text-light);
+	margin: .2rem;
+	padding: .5rem 1.5rem;
+	border-radius: 1rem .3rem .3rem 1rem;
+}
+
+.message_lenta .message_text_my:first-child {
+	border-radius: 1rem 1rem .3rem 1rem;
+}
+
+.message_text_ohter {
+	background: var(--main-bg-grey);
+	color: var(--main-text-dark);
+	margin: .2rem;
+	padding: .5rem 1.5rem;
+	border-radius: .3rem 1rem 1rem .3rem;
+}
+
+.message_lenta .message_text_ohter:first-child {
+	border-radius: 1rem 1rem 1rem .3rem;
 }
 
 .dialog_footer {
 	height: 4.5rem;
 	border-top: 1px solid var(--main-bg-blackout3);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 1.5rem;
+}
+
+.massage_input {
+}
+
+.massage_send {
+	padding: .4rem 1.5rem;
+	background: var(--main-border);
+	color: #fff;
+	font-size: 1.2rem;
+	font-weight: 600;
+	border: none;
+	border-radius: 1rem;
 }
 
 /* ------------------dialog----------------------------- */
