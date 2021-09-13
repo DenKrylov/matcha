@@ -7,15 +7,30 @@ new Vue ({
 		chatPage: true,
 		user: 'Денис',
 		foto: 'foto/avatar.jpeg',
-		activeChat: 'Лена',
-		fotoChat: 'foto/lena00.jpg',
+		partner: {
+			foto: '',
+			name: '',
+			age: '',
+			city: '',
+			gender: '',
+			wave: '',
+			discrpiption: '',
+			date: '',
+		},
+		activeChat: '',
+		fotoChat: '',
+		date: '',
 		chats: [
 			{
-				name: 'Ксюша',
-				message: 'Окей',
 				foto: 'foto/ksu.jpg',
-				data: '11.09.2021',
-				index: 4,
+				name: 'Ксюша',
+				age: '21',
+				city: 'Moscow',
+				message: 'Окей',
+				gender: 'Женщина',
+				wave: '6',
+				discrpiption: 'Люблю кататься на сноуборде! :)',
+				date: '11.09.2021',
 				dialog: [
 					{
 						user: 'Денис',
@@ -36,11 +51,15 @@ new Vue ({
 				]
 			},
 			{
-				name: 'Лена',
-				message: 'Пока',
 				foto: 'foto/lena00.jpg',
-				data: '11.09.2021',
-				index: 4,
+				name: 'Лена',
+				age: '21',
+				city: 'Moscow',
+				message: 'Окей',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Обожаю кошек!',
+				date: '12.09.2021',
 				dialog: [
 					{
 						user: 'Лена',
@@ -65,11 +84,15 @@ new Vue ({
 				]
 			},
 			{
-				name: 'Настя',
-				message: 'Буду',
 				foto: 'foto/nasty.jpg',
-				data: '11.09.2021',
-				index: 4,
+				name: 'Настя',
+				age: '21',
+				city: 'Moscow',
+				message: 'Окей',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Шарю в DS',
+				date: '13.09.2021',
 				dialog: [
 					{
 						user: 'Настя',
@@ -124,18 +147,23 @@ new Vue ({
 			this.register = false;
 		},
 		setActiveChat: function(chat) {
-			this.activeChat = chat.name;
-			this.fotoChat = chat.foto;
-			this.numberOfMessages = chat.index;
+			this.partner.foto = chat.foto;
+			this.partner.name = chat.name;
+			this.partner.age = chat.age;
+			this.partner.city = chat.city;
+			this.partner.gender = chat.gender;
+			this.partner.wave = chat.wave;
+			this.partner.discrpiption = chat.discrpiption;
+			this.partner.date = chat.date;
 		},
 		getActiveChat: function(chat) {
-			if(this.activeChat == chat) {
+			if(this.partner.name == chat) {
 				return("nav_chat__active");
 			}
 		},
 		getDialog: function(chats) {
 			for(i = 0; i < chats.length; i++) {
-				if(chats[i].name == this.activeChat) {
+				if(chats[i].name == this.partner.name) {
 					return(chats[i].dialog);
 				}
 			}

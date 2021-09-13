@@ -98,8 +98,8 @@
 			<div class="dialog">
 				<div class="dialog_header">
 					<div class="dialog_headerInfo">
-						<img class="dialog_headerImg" v-bind:src="fotoChat" alt="foto">
-						<p class="dialog_headerText">Вы и Лена образовали пару </p>
+						<img class="dialog_headerImg" v-bind:src="partner.foto" alt="foto">
+						<p class="dialog_headerText">Вы и {{ partner.name }} образовали пару {{ partner.date }} </p>
 					</div>
 					<img class="close_window" src="images/close24.svg" alt="">
 				</div>
@@ -111,7 +111,7 @@
 							</div>
 						</template>
 						<template v-else>
-							<img class="message_avatarka" v-bind:src="fotoChat" alt="avatarka">
+							<img class="message_avatarka" v-bind:src="partner.foto" alt="avatarka">
 							<div class="message_lenta">
 								<p class="message_text message_text__ohter">{{ message.text }}</p>
 							</div>
@@ -126,18 +126,19 @@
 				</div>
 			</div>
 			<div class="data">
-				<img class="data_header" src="foto/lena00.jpg" alt="foto">
+				<img class="data_header" v-bind:src="partner.foto" alt="foto">
 				<div class="data_body">
 					<div class="data_info">
 						<div class="data_info_header">
-							<p class="data_info_name">Лена</p>
-							<p class="data_info_age">27</p>
+							<p class="data_info_name">{{ partner.name }}</p>
+							<p class="data_info_age">{{ partner.age }}</p>
 						</div>
-						<p class="data_info_text">Живет в Москве</p>
-						<p class="data_info_text">Женщина</p>
+						<p class="data_info_text">Живет в {{ partner.city }}</p>
+						<p class="data_info_text">{{ partner.gender }}</p>
+						<p class="data_info_text">{{ partner.wave }}</p>
 					</div>
 					<div class="data_description">
-						<p class="data_description_text">Описание</p>
+						<p class="data_description_text">{{ partner.discrpiption }}</p>
 					</div>
 				</div>
 				<div class="data_footer">
