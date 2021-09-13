@@ -19,8 +19,17 @@
 	align-items: center;
 }
 
-.main_header_h {
-	margin: 0 1rem;
+.main_headerLogo {
+	display: flex;
+	align-items: center;
+}
+
+.main_headerImg {
+	margin: 0 .3rem 0 2rem;
+	height: 3rem;
+}
+
+.main_headerH {
 	font-size: 3rem;
 }
 

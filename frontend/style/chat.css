@@ -12,7 +12,8 @@
 
 .chat {
 	display: none;
-	color: black;
+	color: black; 
+	/* не работает */
 	display: flex;
 	height: 100%;
 }
@@ -221,18 +222,18 @@
 	align-items: center;
 }
 
+.message_lenta {
+	display: flex;
+	flex-direction: column;
+	margin: .5rem 1rem .5rem .5rem;
+}
+
 .message_my {
 	justify-content: end;
 }
 
 .message_other {
 	justify-content: start;
-}
-
-.message_lenta {
-	display: flex;
-	flex-direction: column;
-	margin: .5rem 1rem .5rem .5rem;
 }
 
 .message_avatarka {
@@ -271,13 +272,9 @@
 	background: var(--main-bg-pink);
 }
 
-.message_text_my::selection {
-    color: var(--main-text-light);
-	background: var(--main-bg-pink);
-}
-
 .message_lenta .message_text_ohter:first-child {
 	border-radius: 1rem 1rem 1rem .3rem;
+	/* не работает */
 }
 
 .dialog_footer {

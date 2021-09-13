@@ -16,20 +16,30 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	height: 35rem;
 	width: 25rem;
 	border-radius: .7rem;
 	background: rgb(255, 255, 255);
 }
 
-.login_window_h {
-	margin: 1.5rem 0 0 0;
-	color: var(--main-text-gray);
-	font-size: 3rem;
+.login_windowHeder {
+	display: flex;
+	width: 100%;
+	justify-content: end;
+}
+
+.login_windowClose {
+	margin: 0 .3rem;
+}
+
+.login_windowLogo {
+	position: relative;
+	height: 5rem;
+	flex: 1 0 auto;
+	display: flex;
+	top: -1rem;
 }
 
 .login_window_text {
-	margin: 1rem;
 	color: var(--main-text-dark);
 	font-size: 2rem;
 }
@@ -38,11 +48,18 @@
 	display: flex;
 	align-items: center;
 	margin: 1rem;
-	padding: 1rem 1rem;
+	padding: .7rem 1rem;
 	width: 19rem;
-	border: 1px solid black;
+	border: 2px solid var(--main-text-gray);
 	border-radius: 3rem;
 	font-size: 1.5rem;
+	color: var(--main-text-gray)
+}
+
+.sign_input:focus {
+    outline-style: none;
+    outline-width: 0px !important;
+    outline-color: none !important;
 }
 
 .sign_send  {

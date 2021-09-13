@@ -19,19 +19,38 @@
 		<div class="main" v-show="mainPage">
 			<div class="main_background"></div>
 			<header class="main_header">
-				<h1 class="main_header_h">matcha</h1>
+				<div class="main_headerLogo">
+					<img class="main_headerImg" src="images/favorite_white_24dp.svg" alt="">
+					<h1 class="main_headerH">matcha</h1>
+				</div>
 				<button class="main_header_button" v-on:click="showLogin">ВОЙДИТЕ</button>
 			</header>
 			<div class="main_body">
 				<p class="main_body_text">Свайп вправо</p>
-				<button class="main_body_button" v-on:click="showLogin">СОЗДАТЬ АККАУНТ</button>
+				<button class="main_body_button" v-on:click="showRegister">СОЗДАТЬ АККАУНТ</button>
 			</div>
 			<div class="login" v-show="loginPage">
+				<div class="login_window login_windowEnter">
+					<div class="login_windowHeder">
+						<img class="login_windowClose close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
+					</div>
+					<img class="login_windowLogo" src="images/favorite_ping_24dp.svg" alt="simvol">
+					<p class="login_window_text">НАЧАТЬ</p>
+					<form  class="login_windowForm" id="sing_form">
+						<input class="sign_input" type="text" name="login" autofocus autocomplete="off">
+						<input class="sign_input" type="password" name="password">
+					</form>
+					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChat">
+				</div>
+			</div>
+			<div class="login" v-show="registerPage">
 				<div class="login_window">
-					<img class="close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
-					<img src="images/favorite_black_24dp.svg" alt="simvol">
+					<div class="login_windowHeder">
+						<img class="login_windowClose close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
+					</div>
+					<img class="login_windowLogo" src="images/favorite_ping_24dp.svg" alt="simvol">
 					<p class="login_window_text">Создать аккаунт</p>
-					<form  class="sign_form" id="sing_form">
+					<form  class="login_windowForm" id="sing_form">
 						<input class="sign_input" type="text" name="login" autofocus autocomplete="off">
 						<input class="sign_input" type="password" name="password">
 						<input class="sign_input" type="password" name="password">
@@ -44,8 +63,8 @@
 			<div class="nav">
 				<div class="nav_header">
 					<div class="nav_logo" v-on:click="showMain">
-						<img class="nav_logoAvatarka" src="foto/avatar.jpeg" alt="">
-						<h3 class="nav_logoH">Денис</h3>
+						<img class="nav_logoAvatarka" v-bind:src="foto" alt="">
+						<h3 class="nav_logoH">{{ user }}</h3>
 					</div>
 					<img class="nav_headerButton" src="images/favorite_white_24dp.svg" alt="">
 				</div>
@@ -57,66 +76,46 @@
 					<div class="nav_body_windowСouples">
 						<div class="nav_card">
 							<img class="nav_cardImg" src="foto/lena00.jpg" alt="foto">
-							<p class="nav_cardName">Ленa</p>
+							<p class="nav_cardName">Лена</p>
 						</div>
 						<div class="nav_card">
 							<img class="nav_cardImg" src="foto/ksu.jpg" alt="foto">
 							<p class="nav_cardName">Ксюша</p>
 						</div>
 					</div>
-					<div class="nav_body_windowChat">
-						<div class="nav_chat">
-							<img class="nav_chatImg" src="foto/ksu.jpg" alt="foto">
+					<ul class="nav_body_windowChat">
+						<li class="nav_chat" v-for="chat in chats" v-on:click="setActiveChat(chat)" v-bind:class="getActiveChat(chat.name)">
+							<img class="nav_chatImg" v-bind:src="chat.foto" alt="foto">
 							<div class="nav_chatBody">
-								<h4 class="nav_chatHeader">Ксюша</h4>
-								<p class="nav_chatText">Привет!</p>
+								<h4 class="nav_chatHeader">{{ chat.name }}</h4>
+								<p class="nav_chatText">{{ chat.message }}</p>
 							</div>
-						</div>
-						<div class="nav_chat nav_chat__active">
-							<img class="nav_chatImg" src="foto/lena00.jpg" alt="foto">
-							<div class="nav_chatBody">
-								<h4>Лена</h4>
-								<p>Привет!</p>
-							</div>
-						</div>
-						<div class="nav_chat">
-							<img class="nav_chatImg" src="foto/nasty.jpg" alt="foto">
-							<div class="nav_chatBody">
-								<h4 class="nav_chatHeader">Настя</h4>
-								<p class="nav_chatText">Привет!</p>
-							</div>
-						</div>
-					</div>
+						</li>
+					</ul>
 				</div>
 				<div class="nav_footer"></div>
 			</div>
 			<div class="dialog">
 				<div class="dialog_header">
 					<div class="dialog_headerInfo">
-						<img class="dialog_headerImg" src="foto/lena00.jpg" alt="foto">
-						<p class="dialog_headerText">Вы и Лена образовали пару 11.09.2021</p>
+						<img class="dialog_headerImg" v-bind:src="fotoChat" alt="foto">
+						<p class="dialog_headerText">Вы и Лена образовали пару </p>
 					</div>
 					<img class="close_window" src="images/close24.svg" alt="">
 				</div>
 				<ul class="dialog_body">
-					<li class="message message_ohter">
-						<img class="message_avatarka" src="foto/lena00.jpg" alt="avatarka">
-						<div class="message_lenta">
-							<p class="message_text message_text__ohter">Привет!</p>
-						</div>
-					</li>
-					<li class="message message_my">
-						<div class="message_lenta">
-							<p class="message_text message_text__my">Привет!</p>
-							<p class="message_text message_text__my">Как дела?</p>
-						</div>
-					</li>
-					<li class="message message_ohter">
-						<img class="message_avatarka" src="foto/lena00.jpg" alt="avatarka">
-						<div class="message_lenta">
-							<p class="message_text message_text__ohter">Хорошо</p>
-							<p class="message_text message_text__ohter">Придешь в школу?</p>
-						</div>
+					<li v-for="message in getDialog(chats)" v-bind:class="sortMassage(message.user)">
+						<template v-if="message.user == user">
+							<div class="message_lenta">
+								<p class="message_text message_text__my">{{ message.text }}</p>
+							</div>
+						</template>
+						<template v-else>
+							<img class="message_avatarka" v-bind:src="fotoChat" alt="avatarka">
+							<div class="message_lenta">
+								<p class="message_text message_text__ohter">{{ message.text }}</p>
+							</div>
+						</template>
 					</li>
 				</ul>
 				<div class="dialog_footer">
