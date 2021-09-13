@@ -22,6 +22,8 @@
 
 .nav {
 	width: 25rem;
+	display: flex;
+	flex-direction: column;
 }
 
 /* ------------------nav_header------------------------- */
@@ -80,18 +82,20 @@
 /* ------------------nav_body--------------------------- */
 
 .nav_body {
+	flex: 1 0 auto;
 	display: flex;
 	flex-direction: column;
 }
 
 .nav_body_windowСouples {
 	display: none;
+	flex: 1 0 auto;
 }
 
 .nav_body_choice {
 	display: flex;
 	align-items: center;
-	height: 4rem;
+	height: 3.5rem;
 }
 
 .nav_body_choiceText {
@@ -126,6 +130,7 @@
 }
 
 .nav_body_windowChat {
+	flex: 1 0 auto;
 	background: var(--main-bg-grey);
 	box-shadow: 0 0 10px 1px var(--main-bg-blackout1) inset;
 }
@@ -284,12 +289,28 @@
 }
 
 .massage_input {
+	font-size: 1rem;
+	font-weight: inherit;
+	width: 40rem;
+	border: none;
+	color: var(--main-text-dark);
+}
+
+.massage_input:focus {
+    outline-style: none;
+    outline-width: 0px !important;
+    outline-color: none !important;
+}
+
+.massage_input::selection {
+    color: var(--main-text-light);
+	background: var(--main-bg-pink);
 }
 
 .massage_send {
 	padding: .4rem 1.5rem;
 	background: var(--main-border);
-	color: #fff;
+	color: var(--main-text-light);
 	font-size: 1.2rem;
 	font-weight: 600;
 	border: none;
@@ -298,6 +319,10 @@
 
 .massage_send__active {
 	background: var(--main-fill);
+}
+
+.massage_send__active:hover {
+	cursor: pointer;
 }
 
 /* ------------------dialog----------------------------- */
@@ -315,8 +340,40 @@
 	flex: 1 0 auto;
 }
 
+
+.data_info_header {
+	display: flex;
+	color: var(--main-text-dark);
+	font-size: 1.8rem;
+}
+
+.data_info {
+	margin: 1rem;
+}
+
+.data_info_name {
+	font-weight: 800;
+	margin: 0 1rem 0 0;
+}
+
+.data_info_text {
+	font-size: 1.2rem;
+	color: var(--main-text-gray);
+}
+
+.data_description {
+	border-top: 1px solid var(--main-border);
+	padding: 1rem;
+}
+
+.data_description_text {
+	margin: .3rem 0;
+	color: var(--main-text-gray);
+}
+
 .data_footer {
 	display: flex;
+	min-height: 4.5rem;
 	height: 4.5rem;
 	border-top: 1px solid var(--main-bg-blackout3);
 }
@@ -343,17 +400,3 @@
 /* ------------------data------------------------------- */
 /* ----------------------------------------------------- */
 /* ----------------------------------------------------- */
-/* ------------------util------------------------------- */
-
-.close_window {
-	height: 2.5rem;
-	cursor: pointer;
-	border-radius: 100%;
-	-webkit-transition: -webkit-transform .3s ease-in-out;
-			transition:         transform .3s ease-in-out;
-}
-
-.close_window:hover {
-	-webkit-transform: rotate(-90deg);
-			transform: rotate(-90deg);
-}

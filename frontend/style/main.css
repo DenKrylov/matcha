@@ -27,17 +27,17 @@
 .main_header_button {
 	margin: 0 1rem;
 	padding: .7rem 1.5rem;
-	background: var(--main-textAlternate);;
+	background: var(--main-bg-white);;
 	border: none;
 	border-radius: .4rem;
 	cursor: pointer;
-	color: var(--main-backgroundNormal);
+	color: var(--main-bg-pink);
 	font-size: 1rem;
 	font-weight: bold;
 }
 
 .main_header_button:hover {
-	background: linear-gradient(90deg, var(--main-backgroundNormal) 35%, var(--main-backgroundAlternate) 100%);
+	background: var(--main-fill);
 	color: var(--main-textAlternate);
 }
 
@@ -57,8 +57,8 @@
 }
 
 .main_body_button {
-	background: linear-gradient(90deg, var(--main-backgroundNormal) 35%, var(--main-backgroundAlternate) 100%);
-	color: var(--main-textAlternate);
+	background: var(--main-fill);
+	color: var(--main-text-light);
 	height: 3.4rem;
 	width: 16rem;
 	border: none;

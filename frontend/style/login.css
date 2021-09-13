@@ -24,13 +24,13 @@
 
 .login_window_h {
 	margin: 1.5rem 0 0 0;
-	color: var(--main-textNormal);
+	color: var(--main-text-gray);
 	font-size: 3rem;
 }
 
 .login_window_text {
 	margin: 1rem;
-	color: var(--main-backgroundNormal);
+	color: var(--main-text-dark);
 	font-size: 2rem;
 }
 
@@ -54,7 +54,13 @@
 	border: none;
 	border-radius: 3rem;
 	font-size: 1.5rem;
-	background: linear-gradient(90deg, var(--main-backgroundNormal) 35%, var(--main-backgroundAlternate) 100%);
-	color: var(--main-textAlternate);
+	background: var(--main-fill);
+	color: var(--main-text-light);
 	cursor: pointer;
+}
+
+.login_close {
+	position: relative;
+	top: .2rem;
+	left: .2rem;
 }
