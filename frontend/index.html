@@ -6,7 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="style/bottom.css">
+	<link rel="stylesheet" href="style/chat.css">
 	<link rel="stylesheet" href="style/color.css">
+	<link rel="stylesheet" href="style/login.css">
 	<link rel="stylesheet" href="style/main.css">
 	<link rel="stylesheet" href="style/style.css">
 	<title>Matcha</title>
@@ -14,15 +16,135 @@
 </head>
 <body>
 	<div class="app">
-		<div class="main">
+		<div class="main" v-show="mainPage">
 			<div class="main_background"></div>
 			<header class="main_header">
 				<h1 class="main_header_h">matcha</h1>
-				<button class="main_header_button">ВОЙДИТЕ</button>
+				<button class="main_header_button" v-on:click="showLogin">ВОЙДИТЕ</button>
 			</header>
 			<div class="main_body">
 				<p class="main_body_text">Свайп вправо</p>
-				<button class="main_body_button">СОЗДАТЬ АККАУНТ</button>
+				<button class="main_body_button" v-on:click="showLogin">СОЗДАТЬ АККАУНТ</button>
+			</div>
+			<div class="login" v-show="loginPage">
+				<div class="login_window">
+					<img class="close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
+					<img src="images/favorite_black_24dp.svg" alt="simvol">
+					<p class="login_window_text">Создать аккаунт</p>
+					<form  class="sign_form" id="sing_form">
+						<input class="sign_input" type="text" name="login" autofocus autocomplete="off">
+						<input class="sign_input" type="password" name="password">
+						<input class="sign_input" type="password" name="password">
+					</form>
+					<input class="sign_send" type="submit" form="test" value="СОЗДАТЬ" v-on:click="showChat">
+				</div>
+			</div>
+		</div>
+		<div class="chat" v-show="chatPage">
+			<div class="nav">
+				<div class="nav_header">
+					<div class="nav_logo" v-on:click="showMain">
+						<img class="nav_logoAvatarka" src="foto/avatar.jpeg" alt="">
+						<h3 class="nav_logoH">Денис</h3>
+					</div>
+					<img class="nav_headerButton" src="images/favorite_white_24dp.svg" alt="">
+				</div>
+				<div class="nav_body">
+					<div class="nav_body_choice">
+						<p class="nav_body_choiceText">Пары</p>
+						<p class="nav_body_choiceText">Сообщения</p>
+					</div>
+					<div class="nav_body_windowСouples">
+						<div class="nav_card">
+							<img class="nav_cardImg" src="foto/lena00.jpg" alt="foto">
+							<p class="nav_cardName">Ленa</p>
+						</div>
+						<div class="nav_card">
+							<img class="nav_cardImg" src="foto/ksu.jpg" alt="foto">
+							<p class="nav_cardName">Ксюша</p>
+						</div>
+					</div>
+					<div class="nav_body_windowChat">
+						<div class="nav_chat">
+							<img class="nav_chatImg" src="foto/ksu.jpg" alt="foto">
+							<div class="nav_chatBody">
+								<h4 class="nav_chatHeader">Ксюша</h4>
+								<p class="nav_chatText">Привет!</p>
+							</div>
+						</div>
+						<div class="nav_chat nav_chat__active">
+							<img class="nav_chatImg" src="foto/lena00.jpg" alt="foto">
+							<div class="nav_chatBody">
+								<h4>Лена</h4>
+								<p>Привет!</p>
+							</div>
+						</div>
+						<div class="nav_chat">
+							<img class="nav_chatImg" src="foto/nasty.jpg" alt="foto">
+							<div class="nav_chatBody">
+								<h4 class="nav_chatHeader">Настя</h4>
+								<p class="nav_chatText">Привет!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="nav_footer"></div>
+			</div>
+			<div class="dialog">
+				<div class="dialog_header">
+					<div class="dialog_headerInfo">
+						<img class="dialog_headerImg" src="foto/lena00.jpg" alt="foto">
+						<p class="dialog_headerText">Вы и Лена образовали пару 11.09.2021</p>
+					</div>
+					<img class="close_window" src="images/close24.svg" alt="">
+				</div>
+				<ul class="dialog_body">
+					<li class="message message_ohter">
+						<img class="message_avatarka" src="foto/lena00.jpg" alt="avatarka">
+						<div class="message_lenta">
+							<p class="message_text message_text__ohter">Привет!</p>
+						</div>
+					</li>
+					<li class="message message_my">
+						<div class="message_lenta">
+							<p class="message_text message_text__my">Привет!</p>
+							<p class="message_text message_text__my">Как дела?</p>
+						</div>
+					</li>
+					<li class="message message_ohter">
+						<img class="message_avatarka" src="foto/lena00.jpg" alt="avatarka">
+						<div class="message_lenta">
+							<p class="message_text message_text__ohter">Хорошо</p>
+							<p class="message_text message_text__ohter">Придешь в школу?</p>
+						</div>
+					</li>
+				</ul>
+				<div class="dialog_footer">
+					<form  id="chat_input">
+						<input class="massage_input" type="text" name="age" autofocus>
+					</form>
+					<input class="massage_send massage_send__active" type="submit" form="test" value="ОТПРАВИТЬ">
+				</div>
+			</div>
+			<div class="data">
+				<img class="data_header" src="foto/lena00.jpg" alt="foto">
+				<div class="data_body">
+					<div class="data_info">
+						<div class="data_info_header">
+							<p class="data_info_name">Лена</p>
+							<p class="data_info_age">27</p>
+						</div>
+						<p class="data_info_text">Живет в Москве</p>
+						<p class="data_info_text">Женщина</p>
+					</div>
+					<div class="data_description">
+						<p class="data_description_text">Описание</p>
+					</div>
+				</div>
+				<div class="data_footer">
+					<button class="data_footerButton">УДАЛИТЬ ИЗ ПАР</button>
+					<button class="data_footerButton">ЗАЯВИТЬ</button>
+				</div>
 			</div>
 		</div>
 	</div>

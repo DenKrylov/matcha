@@ -11,6 +11,7 @@
 }
 
 .chat {
+	display: none;
 	color: black;
 	display: flex;
 	height: 100%;
