@@ -95,7 +95,7 @@
 				</div>
 				<div class="nav_footer"></div>
 			</div>
-			<div class="dialog">
+			<div class="dialog" v-show="dialog">
 				<div class="dialog_header">
 					<div class="dialog_headerInfo">
 						<img class="dialog_headerImg" v-bind:src="partner.foto" alt="foto">
@@ -107,7 +107,7 @@
 					<li v-for="message in getDialog(chats)" v-bind:class="sortMassage(message.user)">
 						<template v-if="message.user == user.name">
 							<div class="message_lenta">
-								<p class="message_text message_text__my">{{ message.text }}</p>
+								<p class="message_text message_text__my"> {{ message.text }}</p>
 							</div>
 						</template>
 						<template v-else>
@@ -125,7 +125,7 @@
 					<input class="massage_send massage_send__active" type="submit" form="test" value="ОТПРАВИТЬ" v-on:click="sendMessage()">
 				</div>
 			</div>
-			<div class="data">
+			<div class="data" v-show="dialog">
 				<img class="data_header" v-bind:src="partner.foto" alt="foto">
 				<div class="data_body">
 					<div class="data_info">

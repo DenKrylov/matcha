@@ -6,6 +6,7 @@
 	--main-bg-pink:  rgb(253, 38, 103);
 	--main-bg-chat-light: rgb(48, 55, 66);
 	--main-bg-chat-blue: rgb(61, 159, 255); 
+	--main-bg-controButton: rgb(230, 234, 240);
 	--main-bg-blackout1: rgba(0,0,0,.1);
 	--main-bg-blackout3: rgba(0,0,0,.3);
 	--main-bg-blackout5: rgba(0,0,0,.5);
@@ -15,4 +16,7 @@
 	--main-text-gray: rgb(102, 113, 128);
 	--main-text-light: rgb(245,247,250);
 	--main-fill: linear-gradient(262deg,var(--main-bk-coral,inherit),var(--main-bg-pink,inherit));
+	--main-dislike: rgb(254, 59, 112);
+	--main-supelike: rgb(56, 189, 249);
+	--main-like: rgb(26, 230, 167);
 }

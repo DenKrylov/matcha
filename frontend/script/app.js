@@ -6,6 +6,8 @@ new Vue ({
 			login: false,
 			register: false,
 			chat: true,
+			dialog: false,
+			change: true,
 		},
 		user: {
 			name: 'Денис',
@@ -27,6 +29,7 @@ new Vue ({
 		chats: [
 			{
 				id: '1',
+				time: 0,
 				foto: 'foto/ksu.jpg',
 				name: 'Ксюша',
 				age: '21',
@@ -39,32 +42,33 @@ new Vue ({
 				dialog: [
 					{
 						user: 'Денис',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Денис',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Ксюша',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Ксюша',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Денис',
-						text: 'Пойдем кофе пить :)'
+						text: 'Пойдем кофе пить :)',
 					},
 					{
 						user: 'Ксюша',
-						text: 'Пойдем!'
+						text: 'Пойдем!',
 					},
 				]
 			},
 			{
 				id: '3',
+				time: 0,
 				foto: 'foto/lena00.jpg',
 				name: 'Лена',
 				age: '21',
@@ -77,28 +81,29 @@ new Vue ({
 				dialog: [
 					{
 						user: 'Лена',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Денис',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Денис',
-						text: 'Как дела?'
+						text: 'Как дела?',
 					},
 					{
 						user: 'Лена',
-						text: 'Хорошо!'
+						text: 'Хорошо!',
 					},
 					{
 						user: 'Лена',
-						text: 'Придешь в школу?'
+						text: 'Придешь в школу?',
 					},
 				]
 			},
 			{
 				id: '10',
+				time: 0,
 				foto: 'foto/nasty.jpg',
 				name: 'Настя',
 				age: '21',
@@ -111,19 +116,19 @@ new Vue ({
 				dialog: [
 					{
 						user: 'Настя',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Денис',
-						text: 'Привет!'
+						text: 'Привет!',
 					},
 					{
 						user: 'Денис',
-						text: 'Когда в школу?'
+						text: 'Когда в школу?',
 					},
 					{
 						user: 'Лена',
-						text: 'Затра!'
+						text: 'Затра!',
 					},
 				]
 			}
@@ -133,7 +138,6 @@ new Vue ({
 				name:  'Лена',
 				foto: 'foto/lena00.jpg'
 			}
-
 		]
 	},
 	methods: {
@@ -202,6 +206,7 @@ new Vue ({
 			let newMessage = {
 				user: this.user.name,
 				text: this.user.tmpMessage,
+				time: new Date().getTime(),
 			};
 			if(this.user.tmpMessage != '' && this.partner.name != '') {
 				this.chats[this.partner.index].dialog.push(newMessage);
@@ -213,6 +218,9 @@ new Vue ({
 			console.log(this.chats);
 			delete this.chats[this.partner.index];
 			console.log(this.chats);
+		},
+		getUsers: function() {
+			return("hi")
 		}
 	}
 })

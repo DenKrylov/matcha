@@ -1,0 +1,88 @@
+.choice {
+	flex: 1 0 auto;
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: var(--main-bg-grey);
+}
+
+.card {
+	flex: 1 0 auto;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.card_foto {
+	height: 40rem;
+	width: 24rem;
+	border-radius: .7rem;
+}
+
+.card_info {
+	position: absolute;
+}
+
+.card_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card_buttonImg {
+	margin: .5rem;
+	height: 2.5rem;
+	border-radius: 100%;
+}
+
+.card_buttonDislike {
+	padding: .8rem;
+	border: 2px solid var(--main-dislike);
+}
+
+.card_buttonSuperlike {
+	padding: .4rem;
+	border: 2px solid var(--main-supelike);
+}
+
+.card_buttonLike {
+	padding: .8rem;
+	border: 2px solid var(--main-like);
+}
+
+.control {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+	margin: 0 0 2rem 0;
+	color: var(--main-text-gray);
+}
+
+.control_button {
+	padding: .2rem 1rem;
+	background: var(--main-bg-controButton);
+	color: var(--main-text-light);
+	font-size: .8rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
+.control_button:hover {
+	background: var(--main-text-gray);
+}
+
+.control_img {
+	margin: 0 .5rem 0 1rem;
+	height: 1rem;
+	border: 2px solid var(--main-text-gray);
+	border-radius: .2rem;
+}
+
+.control_text {
+	font-size: .7rem;
+	font-weight: 700;
+}
