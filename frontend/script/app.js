@@ -1,13 +1,19 @@
 new Vue ({
 	el: '.app',
 	data: {
-		mainPage: false,
-		loginPage: false,
-		registerPage: false,
-		chatPage: true,
-		user: 'Денис',
-		foto: 'foto/avatar.jpeg',
+		page: {
+			main: false,
+			login: false,
+			register: false,
+			chat: true,
+		},
+		user: {
+			name: 'Денис',
+			foto: 'foto/avatar.jpeg',
+			tmpMessage: '',
+		},
 		partner: {
+			id: '',
 			foto: '',
 			name: '',
 			age: '',
@@ -15,18 +21,17 @@ new Vue ({
 			gender: '',
 			wave: '',
 			discrpiption: '',
-			date: '',
+			index: -1,
 		},
-		activeChat: '',
-		fotoChat: '',
-		date: '',
+		// данные через api
 		chats: [
 			{
+				id: '1',
 				foto: 'foto/ksu.jpg',
 				name: 'Ксюша',
 				age: '21',
 				city: 'Moscow',
-				message: 'Окей',
+				lastMessage: 'Окей',
 				gender: 'Женщина',
 				wave: '6',
 				discrpiption: 'Люблю кататься на сноуборде! :)',
@@ -34,6 +39,14 @@ new Vue ({
 				dialog: [
 					{
 						user: 'Денис',
+						text: 'Привет!'
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!'
+					},
+					{
+						user: 'Ксюша',
 						text: 'Привет!'
 					},
 					{
@@ -51,11 +64,12 @@ new Vue ({
 				]
 			},
 			{
+				id: '3',
 				foto: 'foto/lena00.jpg',
 				name: 'Лена',
 				age: '21',
 				city: 'Moscow',
-				message: 'Окей',
+				lastMessage: 'Окей',
 				gender: 'Женщина',
 				wave: '4',
 				discrpiption: 'Обожаю кошек!',
@@ -84,11 +98,12 @@ new Vue ({
 				]
 			},
 			{
+				id: '10',
 				foto: 'foto/nasty.jpg',
 				name: 'Настя',
 				age: '21',
 				city: 'Moscow',
-				message: 'Окей',
+				lastMessage: 'Окей',
 				gender: 'Женщина',
 				wave: '4',
 				discrpiption: 'Шарю в DS',
@@ -111,7 +126,7 @@ new Vue ({
 						text: 'Затра!'
 					},
 				]
-			},
+			}
 		],
 		couples: [
 			{
@@ -123,28 +138,35 @@ new Vue ({
 	},
 	methods: {
 		showMain: function() {
-			this.mainPage = true;
-			this.loginPage = false;
-			this.chatPage = false;
-			this.registerPage = false;
+			this.page.main = true;
+			this.page.login = false;
+			this.page.chat = false;
+			this.page.register = false;
 		},
 		showLogin: function() {
-			this.mainPage = true;
-			this.loginPage = true;
-			this.chatPage = false;
-			this.register = false;
+			this.page.main = true;
+			this.page.login = true;
+			this.page.chat = false;
+			this.page.register = false;
 		},
 		showRegister: function() {
-			this.mainPage = true;
-			this.loginPage = false;
-			this.registerPage = true;
-			this.chatPage = false;
+			this.page.main = true;
+			this.page.login = false;
+			this.page.register = true;
+			this.page.chat = false;
 		},
 		showChat: function() {
-			this.mainPage = false;
-			this.loginPage = false;
-			this.chatPage = true;
-			this.register = false;
+			this.page.main = false;
+			this.page.login = false;
+			this.page.chat = true;
+			this.page.register = false;
+		},
+		getIndexChats: function() {
+			for(let i = 0; i < this.chats.length; i++) {
+				if(this.chats[i].name == this.partner.name) {
+					return (i);
+				}
+			}
 		},
 		setActiveChat: function(chat) {
 			this.partner.foto = chat.foto;
@@ -155,6 +177,7 @@ new Vue ({
 			this.partner.wave = chat.wave;
 			this.partner.discrpiption = chat.discrpiption;
 			this.partner.date = chat.date;
+			this.partner.index = this.getIndexChats();
 		},
 		getActiveChat: function(chat) {
 			if(this.partner.name == chat) {
@@ -169,12 +192,27 @@ new Vue ({
 			}
 		},
 		sortMassage: function(user) {
-			if(user == this.user) {
+			if(user == this.user.name) {
 				return("message message_my");
 			} else {
 				return("message message_ohter");
 			}
-			
+		},
+		sendMessage: function() {
+			let newMessage = {
+				user: this.user.name,
+				text: this.user.tmpMessage,
+			};
+			if(this.user.tmpMessage != '' && this.partner.name != '') {
+				this.chats[this.partner.index].dialog.push(newMessage);
+				this.chats[this.partner.index].lastMessage = this.user.tmpMessage;
+				this.user.tmpMessage = '';
+			}
+		},
+		deleteUser: function() {
+			console.log(this.chats);
+			delete this.chats[this.partner.index];
+			console.log(this.chats);
 		}
 	}
 })

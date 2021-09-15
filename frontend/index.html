@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="app">
-		<div class="main" v-show="mainPage">
+		<div class="main" v-show="page.main">
 			<div class="main_background"></div>
 			<header class="main_header">
 				<div class="main_headerLogo">
@@ -29,7 +29,7 @@
 				<p class="main_body_text">Свайп вправо</p>
 				<button class="main_body_button" v-on:click="showRegister">СОЗДАТЬ АККАУНТ</button>
 			</div>
-			<div class="login" v-show="loginPage">
+			<div class="login" v-show="page.login">
 				<div class="login_window login_windowEnter">
 					<div class="login_windowHeder">
 						<img class="login_windowClose close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
@@ -37,13 +37,13 @@
 					<img class="login_windowLogo" src="images/favorite_ping_24dp.svg" alt="simvol">
 					<p class="login_window_text">НАЧАТЬ</p>
 					<form  class="login_windowForm" id="sing_form">
-						<input class="sign_input" type="text" name="login" autofocus autocomplete="off">
-						<input class="sign_input" type="password" name="password">
+						<input class="sign_input" type="text" name="login" autofocus placeholder="Логин">
+						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
 					</form>
 					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChat">
 				</div>
 			</div>
-			<div class="login" v-show="registerPage">
+			<div class="login" v-show="page.register">
 				<div class="login_window">
 					<div class="login_windowHeder">
 						<img class="login_windowClose close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
@@ -51,20 +51,20 @@
 					<img class="login_windowLogo" src="images/favorite_ping_24dp.svg" alt="simvol">
 					<p class="login_window_text">Создать аккаунт</p>
 					<form  class="login_windowForm" id="sing_form">
-						<input class="sign_input" type="text" name="login" autofocus autocomplete="off">
-						<input class="sign_input" type="password" name="password">
-						<input class="sign_input" type="password" name="password">
+						<input class="sign_input" type="text" name="login" autofocus placeholder="Введите сообщение">
+						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
+						<input class="sign_input" type="password" name="password" placeholder="Проверка пароля">
 					</form>
 					<input class="sign_send" type="submit" form="test" value="СОЗДАТЬ" v-on:click="showChat">
 				</div>
 			</div>
 		</div>
-		<div class="chat" v-show="chatPage">
+		<div class="chat" v-show="page.chat">
 			<div class="nav">
 				<div class="nav_header">
 					<div class="nav_logo" v-on:click="showMain">
-						<img class="nav_logoAvatarka" v-bind:src="foto" alt="">
-						<h3 class="nav_logoH">{{ user }}</h3>
+						<img class="nav_logoAvatarka" v-bind:src="user.foto" alt="">
+						<h3 class="nav_logoH">{{ user.name }}</h3>
 					</div>
 					<img class="nav_headerButton" src="images/favorite_white_24dp.svg" alt="">
 				</div>
@@ -88,7 +88,7 @@
 							<img class="nav_chatImg" v-bind:src="chat.foto" alt="foto">
 							<div class="nav_chatBody">
 								<h4 class="nav_chatHeader">{{ chat.name }}</h4>
-								<p class="nav_chatText">{{ chat.message }}</p>
+								<p class="nav_chatText">{{ chat.lastMessage }}</p>
 							</div>
 						</li>
 					</ul>
@@ -105,7 +105,7 @@
 				</div>
 				<ul class="dialog_body">
 					<li v-for="message in getDialog(chats)" v-bind:class="sortMassage(message.user)">
-						<template v-if="message.user == user">
+						<template v-if="message.user == user.name">
 							<div class="message_lenta">
 								<p class="message_text message_text__my">{{ message.text }}</p>
 							</div>
@@ -120,9 +120,9 @@
 				</ul>
 				<div class="dialog_footer">
 					<form  id="chat_input">
-						<input class="massage_input" type="text" name="age" autofocus>
+						<input class="massage_input" type="text" name="age" v-model="user.tmpMessage" autocomplete="off" autofocus placeholder="Введите сообщение">
 					</form>
-					<input class="massage_send massage_send__active" type="submit" form="test" value="ОТПРАВИТЬ">
+					<input class="massage_send massage_send__active" type="submit" form="test" value="ОТПРАВИТЬ" v-on:click="sendMessage()">
 				</div>
 			</div>
 			<div class="data">
@@ -135,14 +135,14 @@
 						</div>
 						<p class="data_info_text">Живет в {{ partner.city }}</p>
 						<p class="data_info_text">{{ partner.gender }}</p>
-						<p class="data_info_text">{{ partner.wave }}</p>
+						<p class="data_info_text">С {{ partner.wave }} волны</p>
 					</div>
 					<div class="data_description">
 						<p class="data_description_text">{{ partner.discrpiption }}</p>
 					</div>
 				</div>
 				<div class="data_footer">
-					<button class="data_footerButton">УДАЛИТЬ ИЗ ПАР</button>
+					<button class="data_footerButton" v-on:click="deleteUser()">УДАЛИТЬ ИЗ ПАР</button>
 					<button class="data_footerButton">ЗАЯВИТЬ</button>
 				</div>
 			</div>
