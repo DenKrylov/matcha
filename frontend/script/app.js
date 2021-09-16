@@ -2,12 +2,14 @@ new Vue ({
 	el: '.app',
 	data: {
 		page: {
-			main: false,
+			main: true,
 			login: false,
 			register: false,
-			chat: true,
+			chat: false,
+			nav: false,
 			dialog: false,
-			change: true,
+			choice: false,
+			change: false,
 		},
 		user: {
 			name: 'Денис',
@@ -145,25 +147,42 @@ new Vue ({
 			this.page.main = true;
 			this.page.login = false;
 			this.page.chat = false;
+			this.page.nav = false;
+			this.page.dialog = false
 			this.page.register = false;
 		},
 		showLogin: function() {
 			this.page.main = true;
 			this.page.login = true;
 			this.page.chat = false;
+			this.page.nav = false;
+			this.page.dialog = false
 			this.page.register = false;
 		},
 		showRegister: function() {
 			this.page.main = true;
-			this.page.login = false;
-			this.page.register = true;
+			this.page.login = true;
 			this.page.chat = false;
+			this.page.nav = false;
+			this.page.dialog = false
+			this.page.register = false;
 		},
 		showChat: function() {
 			this.page.main = false;
 			this.page.login = false;
 			this.page.chat = true;
+			this.page.nav = true;
+			this.page.dialog = true;
 			this.page.register = false;
+		},
+		showChoice: function() {
+			this.page.main = false;
+			this.page.login = false;
+			this.page.chat = true;
+			this.page.nav = true;
+			this.page.dialog = false
+			this.page.register = false;
+			this.page.choice = true;
 		},
 		getIndexChats: function() {
 			for(let i = 0; i < this.chats.length; i++) {
@@ -173,6 +192,8 @@ new Vue ({
 			}
 		},
 		setActiveChat: function(chat) {
+			this.page.choice = false;
+			this.page.dialog = true;
 			this.partner.foto = chat.foto;
 			this.partner.name = chat.name;
 			this.partner.age = chat.age;

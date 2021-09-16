@@ -7,6 +7,7 @@
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="style/bottom.css">
 	<link rel="stylesheet" href="style/chat.css">
+	<link rel="stylesheet" href="style/choice.css">
 	<link rel="stylesheet" href="style/color.css">
 	<link rel="stylesheet" href="style/login.css">
 	<link rel="stylesheet" href="style/main.css">
@@ -40,7 +41,7 @@
 						<input class="sign_input" type="text" name="login" autofocus placeholder="Логин">
 						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
 					</form>
-					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChat">
+					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChoice()">
 				</div>
 			</div>
 			<div class="login" v-show="page.register">
@@ -60,13 +61,13 @@
 			</div>
 		</div>
 		<div class="chat" v-show="page.chat">
-			<div class="nav">
+			<div class="nav" v-show="page.nav">
 				<div class="nav_header">
 					<div class="nav_logo" v-on:click="showMain">
 						<img class="nav_logoAvatarka" v-bind:src="user.foto" alt="">
 						<h3 class="nav_logoH">{{ user.name }}</h3>
 					</div>
-					<img class="nav_headerButton" src="images/favorite_white_24dp.svg" alt="">
+					<img class="nav_headerButton" src="images/favorite_white_24dp.svg" alt="" v-on:click="showChoice()">
 				</div>
 				<div class="nav_body">
 					<div class="nav_body_choice">
@@ -95,13 +96,13 @@
 				</div>
 				<div class="nav_footer"></div>
 			</div>
-			<div class="dialog" v-show="dialog">
+			<div class="dialog" v-show="page.dialog">
 				<div class="dialog_header">
 					<div class="dialog_headerInfo">
 						<img class="dialog_headerImg" v-bind:src="partner.foto" alt="foto">
 						<p class="dialog_headerText">Вы и {{ partner.name }} образовали пару {{ partner.date }} </p>
 					</div>
-					<img class="close_window" src="images/close24.svg" alt="">
+					<img class="close_window" src="images/close24.svg" alt="" v-on:click="showChoice()">
 				</div>
 				<ul class="dialog_body">
 					<li v-for="message in getDialog(chats)" v-bind:class="sortMassage(message.user)">
@@ -125,7 +126,7 @@
 					<input class="massage_send massage_send__active" type="submit" form="test" value="ОТПРАВИТЬ" v-on:click="sendMessage()">
 				</div>
 			</div>
-			<div class="data" v-show="dialog">
+			<div class="data" v-show="page.dialog">
 				<img class="data_header" v-bind:src="partner.foto" alt="foto">
 				<div class="data_body">
 					<div class="data_info">
@@ -144,6 +145,46 @@
 				<div class="data_footer">
 					<button class="data_footerButton" v-on:click="deleteUser()">УДАЛИТЬ ИЗ ПАР</button>
 					<button class="data_footerButton">ЗАЯВИТЬ</button>
+				</div>
+			</div>
+			<div class="choice" v-show="page.choice">
+				<div class="choice_window">
+					<div class="card">
+						<img class="card_foto" src="foto/lena00.jpg" alt="foto">
+						<div class="card_body">
+							<div class="card_numberOfPhotos">
+								<div class="card_band"></div>
+								<div class="card_band card_band__active"></div>
+							</div>
+							<div class="card_info">
+								<div class="card_nameAge">
+									<p class="card_name">Лена</p>
+									<p class="card_age">27</p>
+								</div>
+								<p class="card_description">Описаниеa</p>
+							</div>
+							<div class="card_button">
+								<img class="card_buttonImg card_buttonDislike" src="images/card/dislike.svg" alt="">
+								<img class="card_buttonImg card_buttonSuperlike" src="images/card/superlike.svg" alt="">
+								<img class="card_buttonImg card_buttonLike" src="images/card/like.svg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="control">
+					<button class="control_button">СКРЫТЬ</button>
+					<img class="control_img" src="images/control/left.svg" alt="arrow_left">
+					<p class="control_text">НЕТ</p>
+					<img class="control_img" src="images/control/right.svg" alt="arrow_right">
+					<p class="control_text">ЛАЙК</p>
+					<img class="control_img" src="images/control/up.svg" alt="arrow_up">
+					<p class="control_text">ОТКРЫТЬ ПРОФИЛЬ</p>
+					<img class="control_img" src="images/control/down.svg" alt="arrow_down">
+					<p class="control_text">ЗАКРЫТЬ ПРОФИЛЬ</p>
+					<img class="control_img" src="images/control/enter.svg" alt="arrow_enter">
+					<p class="control_text">СУПЕР ЛАЙК</p>
+					<img class="control_img" src="" alt="" width="80px">
+					<p class="control_text">СЛЕДУЮ</p>
 				</div>
 			</div>
 		</div>
