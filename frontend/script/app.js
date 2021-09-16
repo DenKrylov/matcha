@@ -1,14 +1,18 @@
 new Vue ({
 	el: '.app',
 	data: {
+		control: {
+			value: 'СКРЫТЬ',
+			status: true,
+		},
 		page: {
-			main: true,
+			main: false,
 			login: false,
 			register: false,
-			chat: false,
-			nav: false,
+			chat: true,
+			nav: true,
 			dialog: false,
-			choice: false,
+			choice: true,
 			change: false,
 		},
 		user: {
@@ -32,7 +36,9 @@ new Vue ({
 			{
 				id: '1',
 				time: 0,
-				foto: 'foto/ksu.jpg',
+				foto: [
+					'foto/ksu.jpg',
+				],
 				name: 'Ксюша',
 				age: '21',
 				city: 'Moscow',
@@ -71,7 +77,10 @@ new Vue ({
 			{
 				id: '3',
 				time: 0,
-				foto: 'foto/lena00.jpg',
+				foto: [
+					'foto/lena00.jpg',
+					'foto/lena01.jpg'
+				],
 				name: 'Лена',
 				age: '21',
 				city: 'Moscow',
@@ -106,7 +115,9 @@ new Vue ({
 			{
 				id: '10',
 				time: 0,
-				foto: 'foto/nasty.jpg',
+				foto: [
+					'foto/nasty.jpg',
+				],
 				name: 'Настя',
 				age: '21',
 				city: 'Moscow',
@@ -194,7 +205,7 @@ new Vue ({
 		setActiveChat: function(chat) {
 			this.page.choice = false;
 			this.page.dialog = true;
-			this.partner.foto = chat.foto;
+			this.partner.foto = chat.foto[0];
 			this.partner.name = chat.name;
 			this.partner.age = chat.age;
 			this.partner.city = chat.city;
@@ -242,6 +253,22 @@ new Vue ({
 		},
 		getUsers: function() {
 			return("hi")
+		},
+		controlPanel: function() {
+			if(this.control.status) {
+				this.control.value = 'ПОКАЗАТЬ';
+				this.control.status = false;
+			} else {
+				this.control.value = 'СКРЫТЬ';
+				this.control.status = true;
+			}
+		},
+		inputColor: function() {
+			if(this.user.tmpMessage.length == 0) {
+				return('massage_send');
+			} else {
+				return('massage_send massage_send__active');
+			}
 		}
 	}
 })

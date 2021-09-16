@@ -132,6 +132,11 @@
 	background: var(--main-text-gray);
 }
 
+.control_panel {
+	display: flex;
+	flex-direction: row;
+}
+
 .control_img {
 	margin: 0 .5rem 0 1rem;
 	height: 1rem;

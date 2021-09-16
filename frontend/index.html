@@ -86,7 +86,7 @@
 					</div>
 					<ul class="nav_body_windowChat">
 						<li class="nav_chat" v-for="chat in chats" v-on:click="setActiveChat(chat)" v-bind:class="getActiveChat(chat.name)">
-							<img class="nav_chatImg" v-bind:src="chat.foto" alt="foto">
+							<img class="nav_chatImg" v-bind:src="chat.foto[0]" alt="foto">
 							<div class="nav_chatBody">
 								<h4 class="nav_chatHeader">{{ chat.name }}</h4>
 								<p class="nav_chatText">{{ chat.lastMessage }}</p>
@@ -123,7 +123,7 @@
 					<form  id="chat_input">
 						<input class="massage_input" type="text" name="age" v-model="user.tmpMessage" autocomplete="off" autofocus placeholder="Введите сообщение">
 					</form>
-					<input class="massage_send massage_send__active" type="submit" form="test" value="ОТПРАВИТЬ" v-on:click="sendMessage()">
+					<input type="submit" form="test" value="ОТПРАВИТЬ" v-bind:class="inputColor()" v-on:click="sendMessage()">
 				</div>
 			</div>
 			<div class="data" v-show="page.dialog">
@@ -172,19 +172,21 @@
 					</div>
 				</div>
 				<div class="control">
-					<button class="control_button">СКРЫТЬ</button>
-					<img class="control_img" src="images/control/left.svg" alt="arrow_left">
-					<p class="control_text">НЕТ</p>
-					<img class="control_img" src="images/control/right.svg" alt="arrow_right">
-					<p class="control_text">ЛАЙК</p>
-					<img class="control_img" src="images/control/up.svg" alt="arrow_up">
-					<p class="control_text">ОТКРЫТЬ ПРОФИЛЬ</p>
-					<img class="control_img" src="images/control/down.svg" alt="arrow_down">
-					<p class="control_text">ЗАКРЫТЬ ПРОФИЛЬ</p>
-					<img class="control_img" src="images/control/enter.svg" alt="arrow_enter">
-					<p class="control_text">СУПЕР ЛАЙК</p>
-					<img class="control_img" src="" alt="" width="80px">
-					<p class="control_text">СЛЕДУЮ</p>
+					<button class="control_button" v-on:click="controlPanel()">{{ control.value }}</button>
+					<div class="control_panel" v-show="control.status">
+						<img class="control_img" src="images/control/left.svg" alt="arrow_left">
+						<p class="control_text">НЕТ</p>
+						<img class="control_img" src="images/control/right.svg" alt="arrow_right">
+						<p class="control_text">ЛАЙК</p>
+						<img class="control_img" src="images/control/up.svg" alt="arrow_up">
+						<p class="control_text">ОТКРЫТЬ ПРОФИЛЬ</p>
+						<img class="control_img" src="images/control/down.svg" alt="arrow_down">
+						<p class="control_text">ЗАКРЫТЬ ПРОФИЛЬ</p>
+						<img class="control_img" src="images/control/enter.svg" alt="arrow_enter">
+						<p class="control_text">СУПЕР ЛАЙК</p>
+						<img class="control_img" src="" alt="" width="80px">
+						<p class="control_text">СЛЕДУЮ</p>
+					</div>
 				</div>
 			</div>
 		</div>
