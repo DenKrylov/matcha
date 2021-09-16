@@ -307,6 +307,16 @@ new Vue ({
 				return('nav_body_windowChat nav_body_windowChat__active');
 			}
 			return('nav_body_windowChat');
+		},
+		mouseOver: function(e) {
+			this.value = e.clientX+':'+e.clientY
+			console.log(this.value);
+			// var x = event.pageX;
+			// var y = event.pageY;
+			// console.log(x, y);
+		},
+		onEnter: function() {
+			console.log("his");
 		}
 	}
 })

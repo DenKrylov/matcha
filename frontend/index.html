@@ -121,9 +121,9 @@
 				</ul>
 				<div class="dialog_footer">
 					<form  id="chat_input">
-						<input class="massage_input" type="text" name="age" v-model="user.tmpMessage" autocomplete="off" autofocus placeholder="Введите сообщение">
+						<input class="massage_input" type="text" name="age" v-model="user.tmpMessage" autocomplete="off" autofocus placeholder="Введите сообщение" v-on:keyup.enter="sendMessage()" v-on:keypress.enter.prevent>
 					</form>
-					<input type="submit" form="test" value="ОТПРАВИТЬ" v-bind:class="inputColor()" v-on:click="sendMessage()">
+					<input type="submit" form="test" value="ОТПРАВИТЬ" v-bind:class="inputColor()" v-on:click="sendMessage()" >
 				</div>
 			</div>
 			<div class="data" v-show="page.dialog">
@@ -149,7 +149,7 @@
 			</div>
 			<div class="choice" v-show="page.choice">
 				<div class="choice_window">
-					<div class="card">
+					<div class="card" v-on:mouseover="mouseOver">
 						<img class="card_foto" v-bind:src="newCouples[0].activeFoto" alt="foto">
 						<div class="card_body">
 							<div class="card_numberOfPhotos">
