@@ -133,9 +133,13 @@
 
 .nav_body_windowChat {
 	flex: 1 0 auto;
+}
+
+.nav_body_windowChat__active {
 	background: var(--main-bg-grey);
 	box-shadow: 0 0 10px 1px var(--main-bg-blackout1) inset;
 }
+
 
 .nav_chat {
 	display: flex;

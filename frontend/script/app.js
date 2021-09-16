@@ -146,6 +146,24 @@ new Vue ({
 				]
 			}
 		],
+		newCouples: [
+			{
+				id: '3',
+				active: 1,
+				activeFoto: 'foto/lena00.jpg',
+				foto: [
+					'foto/lena00.jpg',
+					'foto/lena01.jpg',
+					'foto/lena02.jpg',
+				],
+				name: 'Лена',
+				age: '21',
+				city: 'Moscow',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Обожаю кошек!',
+			},
+		],
 		couples: [
 			{
 				name:  'Лена',
@@ -172,11 +190,11 @@ new Vue ({
 		},
 		showRegister: function() {
 			this.page.main = true;
-			this.page.login = true;
+			this.page.login = false;
 			this.page.chat = false;
 			this.page.nav = false;
 			this.page.dialog = false
-			this.page.register = false;
+			this.page.register = true;
 		},
 		showChat: function() {
 			this.page.main = false;
@@ -194,6 +212,7 @@ new Vue ({
 			this.page.dialog = false
 			this.page.register = false;
 			this.page.choice = true;
+			this.partner.name = '';
 		},
 		getIndexChats: function() {
 			for(let i = 0; i < this.chats.length; i++) {
@@ -247,12 +266,32 @@ new Vue ({
 			}
 		},
 		deleteUser: function() {
-			console.log(this.chats);
 			delete this.chats[this.partner.index];
-			console.log(this.chats);
+			this.render += 1;
+			// не работает
 		},
-		getUsers: function() {
-			return("hi")
+		inputColor: function() {
+			if(this.user.tmpMessage.length == 0) {
+				return('massage_send');
+			} else {
+				return('massage_send massage_send__active');
+			}
+		},
+		// ---------------------card----------------------------
+		choiceFoto: function(num) {
+			console.log(num, this.newCouples[0].activeFoto);
+			this.newCouples[0].active = num;
+			this.newCouples[0].activeFoto = this.newCouples[0].foto[num - 1];
+		},
+		getFoto: function() {
+			return(this.newCouples[0].foto.length);
+		},
+		activeBand: function(num) {
+			if(this.newCouples[0].active == num) {
+				return("card_band card_band__active");
+			} else {
+				return("card_band");
+			}
 		},
 		controlPanel: function() {
 			if(this.control.status) {
@@ -263,12 +302,11 @@ new Vue ({
 				this.control.status = true;
 			}
 		},
-		inputColor: function() {
-			if(this.user.tmpMessage.length == 0) {
-				return('massage_send');
-			} else {
-				return('massage_send massage_send__active');
+		navTheme: function() {
+			if(this.page.dialog) {
+				return('nav_body_windowChat nav_body_windowChat__active');
 			}
+			return('nav_body_windowChat');
 		}
 	}
 })

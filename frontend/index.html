@@ -56,7 +56,7 @@
 						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
 						<input class="sign_input" type="password" name="password" placeholder="Проверка пароля">
 					</form>
-					<input class="sign_send" type="submit" form="test" value="СОЗДАТЬ" v-on:click="showChat">
+					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChoice()">
 				</div>
 			</div>
 		</div>
@@ -84,7 +84,7 @@
 							<p class="nav_cardName">Ксюша</p>
 						</div>
 					</div>
-					<ul class="nav_body_windowChat">
+					<ul v-bind:class="navTheme()">
 						<li class="nav_chat" v-for="chat in chats" v-on:click="setActiveChat(chat)" v-bind:class="getActiveChat(chat.name)">
 							<img class="nav_chatImg" v-bind:src="chat.foto[0]" alt="foto">
 							<div class="nav_chatBody">
@@ -150,16 +150,15 @@
 			<div class="choice" v-show="page.choice">
 				<div class="choice_window">
 					<div class="card">
-						<img class="card_foto" src="foto/lena00.jpg" alt="foto">
+						<img class="card_foto" v-bind:src="newCouples[0].activeFoto" alt="foto">
 						<div class="card_body">
 							<div class="card_numberOfPhotos">
-								<div class="card_band"></div>
-								<div class="card_band card_band__active"></div>
+								<div v-bind:class="activeBand(foto)" v-on:click="choiceFoto(foto)" v-for="foto in getFoto()"></div>
 							</div>
 							<div class="card_info">
 								<div class="card_nameAge">
-									<p class="card_name">Лена</p>
-									<p class="card_age">27</p>
+									<p class="card_name">{{ newCouples[0].name }}</p>
+									<p class="card_age">{{ newCouples[0].age }}</p>
 								</div>
 								<p class="card_description">Описаниеa</p>
 							</div>
