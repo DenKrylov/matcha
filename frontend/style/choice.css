@@ -57,10 +57,39 @@
 	background: var(--main-bg-white);
 }
 
+.card_change {
+	flex: 1 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.card_changeBlock {
+	flex: 1 0 auto;
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+
+.card_changeDirection {
+	height: 3rem;
+}
+
+.card_changeBlock__back {
+	display: flex;
+	justify-content: start;
+}
+
+.card_changeBlock__back:hover {
+	
+}
+
+.card_changeBlock__next {
+	justify-content: end;
+}
+
 .card_info {
 	display: flex;
 	flex-direction: column;
-	flex: 1 0 auto;
 	justify-content: end;
 }
 

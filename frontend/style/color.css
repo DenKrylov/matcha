@@ -15,7 +15,7 @@
 	--main-bk-coral: rgb(255,120,84);
 	--main-text-dark: rgb(48,55,66);
 	--main-text-gray: rgb(102, 113, 128);
-	--main-text-light: rgb(245,247,250);
+	--main-text-light: rgb(245, 247, 250);
 	--main-fill: linear-gradient(262deg,var(--main-bk-coral,inherit),var(--main-bg-pink,inherit));
 	--main-dislike: rgb(254, 59, 112);
 	--main-supelike: #38bdf9;

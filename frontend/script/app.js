@@ -1,6 +1,9 @@
 new Vue ({
 	el: '.app',
 	data: {
+		rander: {
+			nav: 0,
+		},
 		control: {
 			value: 'СКРЫТЬ',
 			status: true,
@@ -266,9 +269,8 @@ new Vue ({
 			}
 		},
 		deleteUser: function() {
-			delete this.chats[this.partner.index];
-			this.render += 1;
-			// не работает
+			this.chats.splice(this.partner.index, 1);
+			console.log(this.rander.nav);
 		},
 		inputColor: function() {
 			if(this.user.tmpMessage.length == 0) {
@@ -279,7 +281,6 @@ new Vue ({
 		},
 		// ---------------------card----------------------------
 		choiceFoto: function(num) {
-			console.log(num, this.newCouples[0].activeFoto);
 			this.newCouples[0].active = num;
 			this.newCouples[0].activeFoto = this.newCouples[0].foto[num - 1];
 		},
@@ -308,15 +309,19 @@ new Vue ({
 			}
 			return('nav_body_windowChat');
 		},
-		mouseOver: function(e) {
-			this.value = e.clientX+':'+e.clientY
-			console.log(this.value);
-			// var x = event.pageX;
-			// var y = event.pageY;
-			// console.log(x, y);
+		mouseOver: function() {
+			console.log("hi");
 		},
-		onEnter: function() {
-			console.log("his");
+		changeFoto: function(num) {
+			if(num == 1 && this.newCouples[0].foto[this.newCouples[0].active]) {
+				this.newCouples[0].activeFoto = this.newCouples[0].foto[this.newCouples[0].active++];
+			} else if(num == 0 && this.newCouples[0].active - 1) {
+				this.newCouples[0].activeFoto = this.newCouples[0].foto[this.newCouples[0].active - 2];
+				this.newCouples[0].active--;
+			}
+		},
+		test: function() {
+			console.log("hi");
 		}
 	}
 })

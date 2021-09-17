@@ -39,7 +39,7 @@
 					<p class="login_window_text">НАЧАТЬ</p>
 					<form  class="login_windowForm" id="sing_form">
 						<input class="sign_input" type="text" name="login" autofocus placeholder="Логин">
-						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
+						<input class="sign_input" type="password" name="password" placeholder="Введите пароль" v-on:keyup.enter="showChoice()">
 					</form>
 					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChoice()">
 				</div>
@@ -54,14 +54,14 @@
 					<form  class="login_windowForm" id="sing_form">
 						<input class="sign_input" type="text" name="login" autofocus placeholder="Введите сообщение">
 						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
-						<input class="sign_input" type="password" name="password" placeholder="Проверка пароля">
+						<input class="sign_input" type="password" name="password" placeholder="Проверка пароля" v-on:keyup.enter="showChoice()">
 					</form>
 					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChoice()">
 				</div>
 			</div>
 		</div>
 		<div class="chat" v-show="page.chat">
-			<div class="nav" v-show="page.nav">
+			<div class="nav" v-show="page.nav" :key="rander.nav">
 				<div class="nav_header">
 					<div class="nav_logo" v-on:click="showMain">
 						<img class="nav_logoAvatarka" v-bind:src="user.foto" alt="">
@@ -149,11 +149,19 @@
 			</div>
 			<div class="choice" v-show="page.choice">
 				<div class="choice_window">
-					<div class="card" v-on:mouseover="mouseOver">
+					<div class="card" >
 						<img class="card_foto" v-bind:src="newCouples[0].activeFoto" alt="foto">
 						<div class="card_body">
 							<div class="card_numberOfPhotos">
 								<div v-bind:class="activeBand(foto)" v-on:click="choiceFoto(foto)" v-for="foto in getFoto()"></div>
+							</div>
+							<div class="card_change">
+								<div class="card_changeBlock card_changeBlock__back" v-on:click="changeFoto(0)">
+									<img class="card_changeDirection" src="images/card/left.svg" alt="backFoto">
+								</div>
+								<div class="card_changeBlock card_changeBlock__next" v-on:click="changeFoto(1)">
+									<img class="card_changeDirection" src="images/card/right.svg" alt="nextFoto">
+								</div>
 							</div>
 							<div class="card_info">
 								<div class="card_nameAge">
