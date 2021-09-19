@@ -136,7 +136,7 @@
 }
 
 .nav_body_windowChat__active {
-	background: var(--main-bg-grey);
+	background: var(--main-bg-gray);
 	box-shadow: 0 0 10px 1px var(--main-bg-blackout1) inset;
 }
 
@@ -266,7 +266,7 @@
 }
 
 .message_text__ohter {
-	background: var(--main-bg-grey);
+	background: var(--main-bg-gray);
 	color: var(--main-text-dark);
 	border-radius: .3rem 1rem 1rem .3rem;
 }
@@ -383,7 +383,7 @@
 .data_footerButton{
 	width: 100%;
 	border: none;
-	background: var(--main-bg-grey);
+	background: var(--main-bg-gray);
 	color: var(--main-text-dark);
 	font-size: .9rem;
 	font-weight: bold;

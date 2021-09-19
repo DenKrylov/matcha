@@ -49,6 +49,11 @@ input:focus {
 	flex-direction: column;
 }
 
+.pageMain {
+	display: flex;
+	height: 100%;
+}
+
 /* ------------------util------------------------------- */
 
 .close {

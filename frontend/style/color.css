@@ -1,6 +1,7 @@
 :root {
 	--main-bg-white1: rgb(255,255,255);
 	--main-bg-white2: rgb(245,247,250);
+	--main-bg-gray: rgb(102, 113, 128);
 	--main-bg-grayA: rgba(243, 247, 248, 0.5);
 	--main-bg-pink:  rgb(253, 38, 103);
 	--main-bg-coral: rgb(255,120,84);

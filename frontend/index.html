@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="style/color.css">
+	<link rel="stylesheet" href="style/nav.css">
 	<link rel="stylesheet" href="style/start.css">
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="style/window.css">
@@ -43,8 +44,40 @@
 				</div>
 			</div>
 		</div>
-		<div class="pageMain" v-if="page.main">
-			<h1>My</h1>
+		<div class="pageMain">
+			<div class="nav">
+				<div class="nav_header">
+					<div class="nav_logo" v-on:click="showStartPage()">
+						<img class="nav_logoAvatarka" v-bind:src="user.foto[0]" alt="avatarka">
+						<h3 class="nav_logoH">{{ user.name }}</h3>
+					</div>
+					<img class="nav_headerButton" src="images/heart_white.svg" alt="">
+				</div>
+				<div class="nav_body">
+					<div class="nav_choice">
+						<p class="nav_choiceText" v-on:click="navChoice(1)" v-bind:class="choiceActive(1)">Пары</p>
+						<p class="nav_choiceText" v-on:click="navChoice(0)" v-bind:class="choiceActive(0)">Сообщения</p>
+					</div>
+					<div class="nav_couplesChats" v-bind:class="navTheme()">
+						<ul class="nav_сouples" v-if="page.сouples">
+							<li class="nav_card" v-for="coupl in couples">
+								<img class="nav_cardImg" v-bind:src="coupl.foto" alt="foto">
+								<p class="nav_cardName">{{ coupl.name }}</p>
+							</li>
+						</ul>
+						<ul v-if="page.chats">
+							<li class="nav_chat" v-for="chat in chats">
+								<img class="nav_chatImg"   v-bind:src="chat.foto[0]" alt="avatarka">
+								<div class="nav_chatBody">
+									<h4 class="nav_chatHeader">{{ chat.name }}</h4>
+									<p class="nav_chatText">{{ chat.lastMessage }}</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="nav_footer"></div>
+			</div>
 		</div>
 	</div>
 	<script src="script/app.js"></script>

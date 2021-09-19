@@ -7,6 +7,22 @@ new Vue ({
 			signin: false,
 			registration: false,
 			main: true,
+			сouples: true,
+			chats: false,
+		},
+		user: {
+			id: '109',
+			foto: [
+				'foto/denis00.jpg',
+			],
+			name: 'Денис',
+			age: '34',
+			city: 'Moscow',
+			lastMessage: 'Окей',
+			gender: 'Мужчина',
+			wave: '4',
+			discrpiption: 'Люблю кататься на сноуборде! :)',
+			date: '11.09.2021',
 		},
 		chats: [
 			{
@@ -120,6 +136,43 @@ new Vue ({
 				]
 			}
 		],
+		couples: [
+			{
+				id: '10',
+				name: 'Оля',
+				foto: 'foto/oly00.jpg'
+			},
+			{
+				id: '11',
+				name: 'Алина',
+				foto: 'foto/alina00.jpg'
+			},
+			{
+				id: '12',
+				name: 'Оля',
+				foto: 'foto/oly00.jpg'
+			},
+			{
+				id: '13',
+				name: 'Алина',
+				foto: 'foto/alina00.jpg'
+			},
+			{
+				id: '14',
+				name: 'Оля',
+				foto: 'foto/oly00.jpg'
+			},
+			{
+				id: '15',
+				name: 'Алина',
+				foto: 'foto/alina00.jpg'
+			},
+			{
+				id: '16',
+				name: 'Алина',
+				foto: 'foto/alina00.jpg'
+			}
+		],
 	},
 	methods: {
 		closeStart: function() {
@@ -129,6 +182,8 @@ new Vue ({
 		},
 		closeMain: function() {
 			this.page.main = false;
+			this.page.couples = false;
+			this.page.chats = false;
 		},
 		closeWindow: function() {
 			this.page.signin = false;
@@ -155,6 +210,7 @@ new Vue ({
 		showMain: function() {
 			this.closeStart();
 			this.page.main = true;
+			this.page.chats = true;
 		},
 		textWindowButton: function() {
 			if(this.page.registration) {
@@ -162,5 +218,26 @@ new Vue ({
 			}
 			return('ВОЙТИ')
 		},
+		navTheme: function() {
+			if(this.page.chats) {
+				return('nav_bodyChat__active');
+			}
+		},
+		navChoice: function(num) {
+			if(num) {
+				this.page.сouples = true;
+				this.page.chats = false;
+			} else {
+				this.page.сouples = false;
+				this.page.chats = true;
+			}
+		},
+		choiceActive: function(num) {
+			if(this.page.сouples && num) {
+				return('nav_choiceText__active');
+			} else if(this.page.chats && !num) {
+				return('nav_choiceText__active');
+			}
+		}
 	},
 })

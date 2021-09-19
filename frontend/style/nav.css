@@ -1,0 +1,177 @@
+.nav {
+	width: 23rem;
+	display: flex;
+	flex-direction: column;
+}
+
+/* ------------------nav_header------------------------- */
+
+.nav_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 4.5rem;
+	background: var(--main-gradient-pink);
+}
+
+.nav_logo {
+	display: flex;
+	align-items: center;
+	margin: 0 0 0 1rem;
+	padding: .1rem .5rem;
+	height: 2.5rem;
+	border-radius: 3rem;
+}
+
+.nav_logo:hover {
+	background: var(--main-bg-blackout3);
+	cursor: pointer;
+}
+
+.nav_logoAvatarka {
+	height: 2rem;
+	border-radius: 100%;
+}
+
+.nav_logoH {
+	margin: 0 0 0 1rem;
+	color: var(--main-text-light);
+}
+
+.nav_headerButton {
+	display: flex;
+	align-items: center;
+	margin: 0 1rem 0 0;
+	padding: .5rem;
+	border-radius: 100%;
+	background: var(--main-bg-blackout3);
+}
+
+.nav_headerButton:hover {
+	filter: brightness(80%);
+	background: var(--main-bg-blackout5);
+	cursor: pointer;
+}
+
+/* ------------------nav_body--------------------------- */
+
+.nav_body {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+/* ------------------nav_choice------------------------- */
+
+.nav_choice {
+	display: flex;
+	align-items: center;
+	height: 3.5rem;
+}
+
+.nav_choiceText__active {
+	border-bottom: 3px solid var(--main-bg-pink);
+}
+
+.nav_choiceText {
+	margin: 0 0 0 3rem;
+	font-family: "NovaBold";
+	font-size: 1.1rem;
+	color: var(--main-text-dark);
+}
+
+.nav_choiceText:hover {
+	cursor: pointer
+}
+
+.nav_couplesChats {
+	flex: 1 0 auto;
+	display: flex;
+	align-items: flex-start;
+}
+
+/* ------------------nav_сouples------------------------- */
+
+.nav_сouples {
+	display: flex;
+	flex-wrap: wrap;
+	padding: .3rem;
+}
+
+.nav_card {
+	padding: .7rem;
+	position: relative;
+	height: 8rem;
+	width: 6rem;
+	transition: scale .3s;
+}
+
+.nav_card:hover {
+	scale: 120%;
+	cursor: pointer;
+}
+
+.nav_cardImg {
+	height: 100%;
+	width: 100%;
+	border-radius: .3rem;
+}
+
+.nav_cardName {
+	position: absolute;
+	left: 1rem;
+	bottom: 1rem;
+	font-family: "NovaBold";
+	font-size: 1.2rem;
+	color: var(--main-text-light);
+}
+/* ------------------nav_chat--------------------------- */
+
+.nav_bodyChat__active {
+	background: var(--main-bg-grayA);
+	box-shadow: 0 0 10px 1px var(--main-bg-blackout1) inset;
+}
+
+.nav_chat {
+	display: flex;
+	align-items: center;
+	height: 6rem;
+	box-sizing: border-box;
+}
+
+.nav_chat:hover {
+	border-right: .4rem solid var(--main-bg-pink);
+	border-top: 1px solid var(--main-border);
+	border-bottom: 1px solid var(--main-border);
+	box-shadow: 0 0 5px var(--main-bg-blackout3);
+	cursor: pointer;
+}
+
+.nav_chat__active {
+	border-right: .4rem solid var(--main-bg-pink);
+	border-top: 1px solid var(--main-border);
+	border-bottom: 1px solid var(--main-border);
+	box-shadow: 0 0 5px var(--main-bg-blackout3);
+}
+
+.nav_chatImg {
+	height: 4rem;
+	border-radius: 100%;
+	margin: 0 1.5rem;
+}
+
+.nav_chatHeader {
+	font-family: "NovaBold";
+	font-size: 1.2rem;
+	color: var(--main-text-dark);
+}
+
+.nav_chatText {
+	color: var(--main-text-gray);
+}
+
+/* ------------------nav_footer--------------------------- */
+
+.nav_footer {
+	height: 3rem;
+}
