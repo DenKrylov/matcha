@@ -5,197 +5,46 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="style/bottom.css">
-	<link rel="stylesheet" href="style/chat.css">
-	<link rel="stylesheet" href="style/choice.css">
 	<link rel="stylesheet" href="style/color.css">
-	<link rel="stylesheet" href="style/login.css">
-	<link rel="stylesheet" href="style/main.css">
+	<link rel="stylesheet" href="style/start.css">
 	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/window.css">
 	<title>Matcha</title>
 	<script src="script/vue.js"></script>
 </head>
 <body>
 	<div class="app">
-		<div class="main" v-show="page.main">
-			<div class="main_background"></div>
-			<header class="main_header">
-				<div class="main_headerLogo">
-					<img class="main_headerImg" src="images/favorite_white_24dp.svg" alt="">
-					<h1 class="main_headerH">matcha</h1>
+		<div class="pageStart" v-if="page.start">
+			<div class="start_background"></div>
+			<header class="start_header">
+				<div class="start_headerLogo">
+					<img class="start_headerImg" src="images/heart_white.svg" alt="logo">
+					<h1 class="start_headerH">matcha</h1>
 				</div>
-				<button class="main_header_button" v-on:click="showLogin">ВОЙДИТЕ</button>
+				<button class="start_headerButton" v-on:click="showSigninPage()">ВОЙДИТЕ</button>
 			</header>
-			<div class="main_body">
-				<p class="main_body_text">Свайп вправо</p>
-				<button class="main_body_button" v-on:click="showRegister">СОЗДАТЬ АККАУНТ</button>
+			<div class="start_body">
+				<p class="start_bodyText">Свайп вправо</p>
+				<button class="start_bodyButton" v-on:click="showRegistrationPage()">СОЗДАТЬ АККАУНТ</button>
 			</div>
-			<div class="login" v-show="page.login">
-				<div class="login_window login_windowEnter">
-					<div class="login_windowHeder">
-						<img class="login_windowClose close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
+			<div class="start_window" v-if="page.signin">
+				<div class="window">
+					<div class="window_header">
+						<img class="window_close close" src="images/close.svg" alt="close" v-on:click="closeWindow()">
 					</div>
-					<img class="login_windowLogo" src="images/favorite_ping_24dp.svg" alt="simvol">
-					<p class="login_window_text">НАЧАТЬ</p>
-					<form  class="login_windowForm" id="sing_form">
-						<input class="sign_input" type="text" name="login" autofocus placeholder="Логин">
-						<input class="sign_input" type="password" name="password" placeholder="Введите пароль" v-on:keyup.enter="showChoice()">
+					<img class="window_logo" src="images/heart_ping.svg" alt="logo">
+					<p class="window_text">НАЧАТЬ</p>
+					<form class="window_form">
+						<input class="window_formInput" type="text" name="login" autofocus placeholder="Логин">
+						<input class="window_formInput" type="password" name="password" placeholder="Введите пароль">
+						<input class="window_formInput" type="password" name="password" placeholder="Введите пароль" v-if="page.registration">
 					</form>
-					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChoice()">
-				</div>
-			</div>
-			<div class="login" v-show="page.register">
-				<div class="login_window">
-					<div class="login_windowHeder">
-						<img class="login_windowClose close_window login_close" v-on:click="showMain()" src="images/close24.svg" alt="">
-					</div>
-					<img class="login_windowLogo" src="images/favorite_ping_24dp.svg" alt="simvol">
-					<p class="login_window_text">Создать аккаунт</p>
-					<form  class="login_windowForm" id="sing_form">
-						<input class="sign_input" type="text" name="login" autofocus placeholder="Введите сообщение">
-						<input class="sign_input" type="password" name="password" placeholder="Введите пароль">
-						<input class="sign_input" type="password" name="password" placeholder="Проверка пароля" v-on:keyup.enter="showChoice()">
-					</form>
-					<input class="sign_send" type="submit" form="test" value="ВОЙТИ" v-on:click="showChoice()">
+					<input class="window_formSend" type="submit" form="test" v-bind:value="textWindowButton()" v-on:click="showMain()">
 				</div>
 			</div>
 		</div>
-		<div class="chat" v-show="page.chat">
-			<div class="nav" v-show="page.nav" :key="rander.nav">
-				<div class="nav_header">
-					<div class="nav_logo" v-on:click="showMain">
-						<img class="nav_logoAvatarka" v-bind:src="user.foto" alt="">
-						<h3 class="nav_logoH">{{ user.name }}</h3>
-					</div>
-					<img class="nav_headerButton" src="images/favorite_white_24dp.svg" alt="" v-on:click="showChoice()">
-				</div>
-				<div class="nav_body">
-					<div class="nav_body_choice">
-						<p class="nav_body_choiceText">Пары</p>
-						<p class="nav_body_choiceText">Сообщения</p>
-					</div>
-					<div class="nav_body_windowСouples">
-						<div class="nav_card">
-							<img class="nav_cardImg" src="foto/lena00.jpg" alt="foto">
-							<p class="nav_cardName">Лена</p>
-						</div>
-						<div class="nav_card">
-							<img class="nav_cardImg" src="foto/ksu.jpg" alt="foto">
-							<p class="nav_cardName">Ксюша</p>
-						</div>
-					</div>
-					<ul v-bind:class="navTheme()">
-						<li class="nav_chat" v-for="chat in chats" v-on:click="setActiveChat(chat)" v-bind:class="getActiveChat(chat.name)">
-							<img class="nav_chatImg" v-bind:src="chat.foto[0]" alt="foto">
-							<div class="nav_chatBody">
-								<h4 class="nav_chatHeader">{{ chat.name }}</h4>
-								<p class="nav_chatText">{{ chat.lastMessage }}</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="nav_footer"></div>
-			</div>
-			<div class="dialog" v-show="page.dialog">
-				<div class="dialog_header">
-					<div class="dialog_headerInfo">
-						<img class="dialog_headerImg" v-bind:src="partner.foto" alt="foto">
-						<p class="dialog_headerText">Вы и {{ partner.name }} образовали пару {{ partner.date }} </p>
-					</div>
-					<img class="close_window" src="images/close24.svg" alt="" v-on:click="showChoice()">
-				</div>
-				<ul class="dialog_body">
-					<li v-for="message in getDialog(chats)" v-bind:class="sortMassage(message.user)">
-						<template v-if="message.user == user.name">
-							<div class="message_lenta">
-								<p class="message_text message_text__my"> {{ message.text }}</p>
-							</div>
-						</template>
-						<template v-else>
-							<img class="message_avatarka" v-bind:src="partner.foto" alt="avatarka">
-							<div class="message_lenta">
-								<p class="message_text message_text__ohter">{{ message.text }}</p>
-							</div>
-						</template>
-					</li>
-				</ul>
-				<div class="dialog_footer">
-					<form  id="chat_input">
-						<input class="massage_input" type="text" name="age" v-model="user.tmpMessage" autocomplete="off" autofocus placeholder="Введите сообщение" v-on:keyup.enter="sendMessage()" v-on:keypress.enter.prevent>
-					</form>
-					<input type="submit" form="test" value="ОТПРАВИТЬ" v-bind:class="inputColor()" v-on:click="sendMessage()" >
-				</div>
-			</div>
-			<div class="data" v-show="page.dialog">
-				<img class="data_header" v-bind:src="partner.foto" alt="foto">
-				<div class="data_body">
-					<div class="data_info">
-						<div class="data_info_header">
-							<p class="data_info_name">{{ partner.name }}</p>
-							<p class="data_info_age">{{ partner.age }}</p>
-						</div>
-						<p class="data_info_text">Живет в {{ partner.city }}</p>
-						<p class="data_info_text">{{ partner.gender }}</p>
-						<p class="data_info_text">С {{ partner.wave }} волны</p>
-					</div>
-					<div class="data_description">
-						<p class="data_description_text">{{ partner.discrpiption }}</p>
-					</div>
-				</div>
-				<div class="data_footer">
-					<button class="data_footerButton" v-on:click="deleteUser()">УДАЛИТЬ ИЗ ПАР</button>
-					<button class="data_footerButton">ЗАЯВИТЬ</button>
-				</div>
-			</div>
-			<div class="choice" v-show="page.choice">
-				<div class="choice_window">
-					<div class="card" >
-						<img class="card_foto" v-bind:src="newCouples[0].activeFoto" alt="foto">
-						<div class="card_body">
-							<div class="card_numberOfPhotos">
-								<div v-bind:class="activeBand(foto)" v-on:click="choiceFoto(foto)" v-for="foto in getFoto()"></div>
-							</div>
-							<div class="card_change">
-								<div class="card_changeBlock card_changeBlock__back" v-on:click="changeFoto(0)">
-									<img class="card_changeDirection" src="images/card/left.svg" alt="backFoto">
-								</div>
-								<div class="card_changeBlock card_changeBlock__next" v-on:click="changeFoto(1)">
-									<img class="card_changeDirection" src="images/card/right.svg" alt="nextFoto">
-								</div>
-							</div>
-							<div class="card_info">
-								<div class="card_nameAge">
-									<p class="card_name">{{ newCouples[0].name }}</p>
-									<p class="card_age">{{ newCouples[0].age }}</p>
-								</div>
-								<p class="card_description">Описаниеa</p>
-							</div>
-							<div class="card_button">
-								<img class="card_buttonImg card_buttonDislike" src="images/card/dislike.svg" alt="">
-								<img class="card_buttonImg card_buttonSuperlike" src="images/card/superlike.svg" alt="">
-								<img class="card_buttonImg card_buttonLike" src="images/card/like.svg" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="control">
-					<button class="control_button" v-on:click="controlPanel()">{{ control.value }}</button>
-					<div class="control_panel" v-show="control.status">
-						<img class="control_img" src="images/control/left.svg" alt="arrow_left">
-						<p class="control_text">НЕТ</p>
-						<img class="control_img" src="images/control/right.svg" alt="arrow_right">
-						<p class="control_text">ЛАЙК</p>
-						<img class="control_img" src="images/control/up.svg" alt="arrow_up">
-						<p class="control_text">ОТКРЫТЬ ПРОФИЛЬ</p>
-						<img class="control_img" src="images/control/down.svg" alt="arrow_down">
-						<p class="control_text">ЗАКРЫТЬ ПРОФИЛЬ</p>
-						<img class="control_img" src="images/control/enter.svg" alt="arrow_enter">
-						<p class="control_text">СУПЕР ЛАЙК</p>
-						<img class="control_img" src="" alt="" width="80px">
-						<p class="control_text">СЛЕДУЮ</p>
-					</div>
-				</div>
-			</div>
+		<div class="pageMain" v-if="page.main">
+			<h1>My</h1>
 		</div>
 	</div>
 	<script src="script/app.js"></script>

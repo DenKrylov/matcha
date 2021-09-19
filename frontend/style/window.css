@@ -1,0 +1,80 @@
+.start_window {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	background: var(--main-bg-blackout5);
+}
+
+.window {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 25rem;
+	border-radius: .7rem;
+	background: var(--main-bg-white1);
+}
+
+.window_header {
+	display: flex;
+	width: 100%;
+	justify-content: end;
+}
+
+.window_close {
+	position: relative;
+	height: 2.5rem;
+	top: 1rem;
+	left: -.5rem;
+	margin: 0 .3rem;
+}
+
+.window_logo {
+	position: relative;
+	height: 5rem;
+	flex: 1 0 auto;
+	display: flex;
+	top: -1rem;
+}
+
+.window_text {
+	font-family: "NovaBold";
+	font-size: 2rem;
+	color: var(--main-text-dark);
+}
+
+.window_formInput {
+	display: flex;
+	align-items: center;
+	margin: 1rem;
+	padding: .7rem 1rem;
+	width: 19rem;
+	border: 2px solid var(--main-text-gray);
+	border-radius: 3rem;
+	font-size: 1.5rem;
+	color: var(--main-text-gray)
+}
+
+.window_formSend {
+	display: flex;
+	align-items: center;
+	margin: 0 0 2rem 0;
+	padding: .5rem;
+	width: 15rem;
+	border: none;
+	border-radius: 3rem;
+	font-size: 1.5rem;
+	background: var(--main-gradient-pink);
+	color: var(--main-text-light);
+	cursor: pointer;
+}
+
+.window_formSend:focus, .window_formSend:hover {
+	background: var(--main-gradient-reversePink);
+}

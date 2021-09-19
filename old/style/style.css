@@ -1,11 +1,6 @@
 @font-face {
-	font-family: "Nova";  
-	src: url("../font/ProximaNova/ProximaNova-Regular.ttf");
-}
-
-@font-face {
-	font-family: "NovaBold";  
-	src: url("../font/ProximaNova/ProximaNova-Bold.ttf");
+	font-family: "Oswald";  
+	src: url("../font/Oswald-VariableFont_wght.ttf");
 }
 
 * {
@@ -24,23 +19,8 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	font-family: "Nova";
-	color: var(--main-text-light);
-}
-
-a {
-	text-decoration: none;
-	color: var(--main-textAlternate);
-}
-
-li {
-	list-style-type: none;
-}
-
-input:focus {
-	outline-style: none;
-    outline-width: 0px !important;
-    outline-color: none !important;
+	font-family: "Oswald";
+	color: white;
 }
 
 .app {
@@ -49,9 +29,17 @@ input:focus {
 	flex-direction: column;
 }
 
+a {
+	text-decoration: none;
+	color: var(--main-textAlternate);
+}
+li {
+	list-style-type: none;
+}
+
 /* ------------------util------------------------------- */
 
-.close {
+.close_window {
 	height: 2.5rem;
 	cursor: pointer;
 	border-radius: 100%;
@@ -59,7 +47,7 @@ input:focus {
 			transition:         transform .3s ease-in-out;
 }
 
-.close:hover {
+.close_window:hover {
 	-webkit-transform: rotate(-90deg);
 			transform: rotate(-90deg);
 }
