@@ -67,6 +67,7 @@
 	display: flex;
 	align-items: center;
 	height: 3.5rem;
+	box-sizing: border-box;
 }
 
 .nav_choiceText__active {
@@ -88,6 +89,7 @@
 	flex: 1 0 auto;
 	display: flex;
 	align-items: flex-start;
+	flex-direction: column;
 }
 
 /* ------------------nav_сouples------------------------- */
@@ -127,7 +129,14 @@
 }
 /* ------------------nav_chat--------------------------- */
 
-.nav_bodyChat__active {
+
+.nav_chats {
+	flex : 1 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
 	background: var(--main-bg-grayA);
 	box-shadow: 0 0 10px 1px var(--main-bg-blackout1) inset;
 }
@@ -135,8 +144,9 @@
 .nav_chat {
 	display: flex;
 	align-items: center;
-	height: 6rem;
+	width: 100%;
 	box-sizing: border-box;
+	height: 6rem;
 }
 
 .nav_chat:hover {
@@ -153,6 +163,7 @@
 	border-bottom: 1px solid var(--main-border);
 	box-shadow: 0 0 5px var(--main-bg-blackout3);
 }
+
 
 .nav_chatImg {
 	height: 4rem;

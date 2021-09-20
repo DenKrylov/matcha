@@ -1,14 +1,14 @@
 new Vue ({
 	el: ".app",
 	data: {
-		partner: 0,
+		partner: '0',
 		page: {
 			start: false,
 			signin: false,
 			registration: false,
 			main: true,
-			сouples: true,
-			chats: false,
+			сouples: false,
+			chats: true,
 		},
 		user: {
 			id: '109',
@@ -182,7 +182,7 @@ new Vue ({
 		},
 		closeMain: function() {
 			this.page.main = false;
-			this.page.couples = false;
+			this.page.сouples = false;
 			this.page.chats = false;
 		},
 		closeWindow: function() {
@@ -218,11 +218,6 @@ new Vue ({
 			}
 			return('ВОЙТИ')
 		},
-		navTheme: function() {
-			if(this.page.chats) {
-				return('nav_bodyChat__active');
-			}
-		},
 		navChoice: function(num) {
 			if(num) {
 				this.page.сouples = true;
@@ -238,6 +233,14 @@ new Vue ({
 			} else if(this.page.chats && !num) {
 				return('nav_choiceText__active');
 			}
-		}
+		},
+		chatActive: function(chat) {
+			this.partner = chat.id;
+		},
+		chatActiveClass: function(chat) {
+			if(this.partner == chat.id) {
+				return('nav_chat__active');
+			}
+		},
 	},
 })

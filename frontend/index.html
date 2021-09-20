@@ -58,15 +58,15 @@
 						<p class="nav_choiceText" v-on:click="navChoice(1)" v-bind:class="choiceActive(1)">Пары</p>
 						<p class="nav_choiceText" v-on:click="navChoice(0)" v-bind:class="choiceActive(0)">Сообщения</p>
 					</div>
-					<div class="nav_couplesChats" v-bind:class="navTheme()">
+					<div class="nav_couplesChats">
 						<ul class="nav_сouples" v-if="page.сouples">
 							<li class="nav_card" v-for="coupl in couples">
 								<img class="nav_cardImg" v-bind:src="coupl.foto" alt="foto">
 								<p class="nav_cardName">{{ coupl.name }}</p>
 							</li>
 						</ul>
-						<ul v-if="page.chats">
-							<li class="nav_chat" v-for="chat in chats">
+						<ul class="nav_chats" v-if="page.chats">
+							<li class="nav_chat" v-for="chat in chats" v-on:click="chatActive(chat)" v-bind:class="chatActiveClass(chat)">
 								<img class="nav_chatImg"   v-bind:src="chat.foto[0]" alt="avatarka">
 								<div class="nav_chatBody">
 									<h4 class="nav_chatHeader">{{ chat.name }}</h4>
