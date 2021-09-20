@@ -1,7 +1,11 @@
 new Vue ({
 	el: ".app",
 	data: {
-		partner: '0',
+		partner: '-1',
+		control: {
+			value: 'СКРЫТЬ',
+			status: true,
+		},
 		page: {
 			start: false,
 			signin: false,
@@ -9,6 +13,7 @@ new Vue ({
 			main: true,
 			сouples: false,
 			chats: true,
+			choice: true,
 		},
 		user: {
 			id: '109',
@@ -173,6 +178,38 @@ new Vue ({
 				foto: 'foto/alina00.jpg'
 			}
 		],
+		cards: [
+			{
+				id: '230',
+				active: 0,
+				foto: [
+					'foto/nataliy00.jpg',
+					'foto/nataliy01.jpg',
+					'foto/nataliy02.jpg',
+					'foto/nataliy03.jpg',
+				],
+				name: 'Наталья',
+				age: '21',
+				city: 'Moscow',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Обожаю кошек!',
+			},
+			{
+				id: '230',
+				active: 0,
+				foto: [
+					'foto/ulia00.jpg',
+					'foto/ulia01.jpg',
+				],
+				name: 'Юлия',
+				age: '21',
+				city: 'Moscow',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Обожаю кошек!',
+			},
+		]
 	},
 	methods: {
 		closeStart: function() {
@@ -241,6 +278,38 @@ new Vue ({
 			if(this.partner == chat.id) {
 				return('nav_chat__active');
 			}
+		},
+		controlPanel: function() {
+			if(this.control.status) {
+				this.control.value = 'ПОКАЗАТЬ';
+				this.control.status = false;
+			} else {
+				this.control.value = 'СКРЫТЬ';
+				this.control.status = true;
+			}
+		},
+		changeFoto: function(num) {
+			console.log(num);
+			if(num == 1 && this.cards[0].foto[this.cards[0].active + 1]) {
+				this.cards[0].activeFoto = this.cards[0].foto[this.cards[0].active++];
+			} else if(num == 0 && this.cards[0].active) {
+				this.cards[0].activeFoto = this.cards[0].foto[this.cards[0].active];
+				this.cards[0].active--;
+			}
+		},
+		getFoto: function() {
+			return(this.cards[0].foto.length);
+		},
+		activeBand: function(num) {
+			if(this.cards[0].active == num - 1) {
+				return("card_band card_band__active");
+			} else {
+				return("card_band");
+			}
+		},
+		choiceFoto: function(num) {
+			this.cards[0].active = num - 1;
+			console.log(num);
 		},
 	},
 })

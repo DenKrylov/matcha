@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="style/choice.css">
 	<link rel="stylesheet" href="style/color.css">
 	<link rel="stylesheet" href="style/nav.css">
 	<link rel="stylesheet" href="style/start.css">
@@ -77,6 +78,55 @@
 					</div>
 				</div>
 				<div class="nav_footer"></div>
+			</div>
+			<div class="choice_window" v-if="page.choice">
+				<div class="choice_card">
+					<div class="card" >
+						<img class="card_foto" v-bind:src="cards[0].foto[cards[0].active]" alt="foto">
+						<div class="card_body">
+							<div class="card_numberOfPhotos">
+								<div v-for="foto in getFoto()" v-bind:class="activeBand(foto)" v-on:click="choiceFoto(foto)"></div>
+							</div>
+							<div class="card_change">
+								<div class="card_changeBlock card_changeBlock__back" v-on:click="changeFoto(0)">
+									<img class="card_changeDirection" src="images/card/left.svg" alt="backFoto">
+								</div>
+								<div class="card_changeBlock card_changeBlock__next" v-on:click="changeFoto(1)">
+									<img class="card_changeDirection" src="images/card/right.svg" alt="nextFoto">
+								</div>
+							</div>
+							<div class="card_info">
+								<div class="card_nameAge">
+									<p class="card_name">{{ cards[0].name }}</p>
+									<p class="card_age">{{ cards[0].age }}</p>
+								</div>
+								<p class="card_description">{{ cards[0].discrpiption }}</p>
+							</div>
+							<div class="card_button">
+								<img class="card_buttonImg card_buttonDislike" src="images/card/dislike.svg" alt="">
+								<img class="card_buttonImg card_buttonSuperlike" src="images/card/superlike.svg" alt="">
+								<img class="card_buttonImg card_buttonLike" src="images/card/like.svg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="control">
+					<button class="control_button" v-on:click="controlPanel()">{{ control.value }}</button>
+					<div class="control_panel" v-if="control.status">
+						<img class="control_img" src="images/control/left.svg" alt="arrow_left">
+						<p class="control_text">НЕТ</p>
+						<img class="control_img" src="images/control/right.svg" alt="arrow_right">
+						<p class="control_text">ЛАЙК</p>
+						<img class="control_img" src="images/control/up.svg" alt="arrow_up">
+						<p class="control_text">ОТКРЫТЬ ПРОФИЛЬ</p>
+						<img class="control_img" src="images/control/down.svg" alt="arrow_down">
+						<p class="control_text">ЗАКРЫТЬ ПРОФИЛЬ</p>
+						<img class="control_img" src="images/control/enter.svg" alt="arrow_enter">
+						<p class="control_text">СУПЕР ЛАЙК</p>
+						<img class="control_img" src="" alt="" width="80px">
+						<p class="control_text">СЛЕДУЮ</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

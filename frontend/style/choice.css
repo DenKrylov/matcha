@@ -1,0 +1,176 @@
+.choice_window {
+	flex: 1 0 auto;
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--main-bg-grayA);
+}
+
+.choice_card{
+	flex: 1 0 auto;
+	display: flex;
+	align-items: center;
+}
+
+.card {
+	position: relative;
+	height: 40rem;
+	width: 24rem;
+	cursor: pointer;
+}
+
+.card_foto {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	border-radius: .4rem;
+}
+
+.card_body {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(180deg, rgba(253,45,45,0) 70%, rgba(0,0,0,1) 87%);
+	border-radius: .4rem;
+}
+
+.card_numberOfPhotos {
+	display: flex;
+	margin: .2rem .4rem;
+}
+
+.card_band {
+	flex: 1 0 auto;
+	margin: .1rem;
+	height: .3rem;
+	border-radius: 3rem;
+	background: var(--main-bg-blackout2);
+}
+
+.card_band__active {
+	background: var(--main-bg-white1);
+}
+
+.card_change {
+	flex: 1 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.card_changeBlock {
+	flex: 1 0 auto;
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+
+.card_changeDirection {
+	height: 3rem;
+}
+
+.card_changeBlock__back {
+	justify-content: start;
+}
+
+.card_changeBlock__next {
+	justify-content: end;
+}
+
+.card_info {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	height: 5rem;
+}
+
+.card_nameAge {
+	margin: 0 1.5rem;
+	font-size: 2rem;
+	display: flex;
+	color: var(--main-text-light);	
+}
+
+.card_name {
+	margin: 0 1rem 0 0;
+	font-family: "NovaBold";
+}
+
+.card_description {
+	margin:  0 1.5rem;
+	font-size: 1.2rem;
+	font-weight: 300;
+	color: var(--main-text-light);
+}
+
+.card_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 0 .7rem 0;
+}
+
+.card_buttonImg {
+	margin: 2rem .5rem .5rem .5rem;
+	height: 2.5rem;
+	border-radius: 100%;
+}
+
+.card_buttonDislike {
+	padding: .8rem;
+	border: 2px solid var(--main-bg-dislike);
+}
+
+.card_buttonSuperlike {
+	padding: .4rem;
+	border: 2px solid var(--main-bg-supelike);
+}
+
+.card_buttonLike {
+	padding: .8rem;
+	border: 2px solid var(--main-bg-like);
+}
+
+.control {
+	display: flex;
+	align-items: center;
+	margin: 0 0 2rem 0;
+	color: var(--main-text-gray);
+}
+
+.control_button {
+	padding: .2rem 1rem;
+	background: var(--main-bg-controButton);
+	color: var(--main-text-light);
+	font-size: .8rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
+.control_button:hover {
+	background: var(--main-text-gray);
+}
+
+.control_panel {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.control_img {
+	margin: 0 .5rem 0 1rem;
+	height: 1rem;
+	border: 2px solid var(--main-text-gray);
+	border-radius: .2rem;
+}
+
+.control_text {
+	font-size: .7rem;
+	font-weight: 700;
+}
