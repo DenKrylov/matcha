@@ -20,6 +20,9 @@
 	--main-text-dark: rgb(48,55,66);
 	--main-text-gray: rgb(102, 113, 128);
 	--main-text-light: rgb(245, 247, 250);
+	--main-gradient-dislike: linear-gradient(240deg,var(--main-bg-grayA) 60%,var(--main-bg-pink) 100%);
+	--main-gradient-like: linear-gradient(120deg,var(--main-bg-grayA) 60%,var(--main-bg-like) 100%);
+	--main-gradient-superlike: linear-gradient(120deg,var(--main-bg-grayA) 60%,var(--main-bg-supelike) 100%);
 	--main-gradient-pink: linear-gradient(262deg,var(--main-bg-coral,inherit),var(--main-bg-pink,inherit));
 	--main-gradient-reversePink: linear-gradient(262deg,var(--main-bg-pink,inherit),var(--main-bg-coral,inherit));
 	--main-gradient-upBlack: linear-gradient(0deg, rgba(253,45,45,0) 0%, rgba(0,0,0,1) 80%);

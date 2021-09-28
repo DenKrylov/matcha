@@ -260,6 +260,13 @@ new Vue ({
 			this.page.chats = true;
 			this.page.choice = true;
 			this.page.dialog = false;
+			if(this.page.сouples) {
+				this.page.сouples = true;
+				this.page.chats = false;
+			} else {
+				this.page.сouples = true;
+				this.page.chats = false;
+			} 
 		},
 		showDialog: function() {
 			this.closeStart();
@@ -389,7 +396,16 @@ new Vue ({
 			}
 		},
 		deleteUser: function() {
-			this.chats.splice(this.partner.index, 1);
-		}
+			if(this.chats.length == 1) {
+				console.log(this.chats.length);
+				this.chats.splice(this.partner.index, 1);
+			} else {
+				this.chats.splice(this.partner.index, 1);
+			}
+		},
+		// -----------------------------------------cardMove------------------------
+		changeCoordinateCard: function() {
+			console.log("hil");
+		},
 	},
 })

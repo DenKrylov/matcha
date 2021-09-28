@@ -6,16 +6,18 @@
 	justify-content: space-between;
 	align-items: center;
 	background: var(--main-bg-grayA);
+	/* background: var(--main-gradient-superlike); */
 }
 
 .choice_card{
 	flex: 1 0 auto;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .card {
-	position: relative;
+	position: absolute;
 	height: 40rem;
 	width: 24rem;
 	cursor: pointer;

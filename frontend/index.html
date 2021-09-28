@@ -83,11 +83,11 @@
 			</div>
 			<div class="choice_window" v-if="page.choice">
 				<div class="choice_card">
-					<div class="card" >
+					<div class="card">
 						<img class="card_foto" v-bind:src="cards[0].foto[cards[0].active]" alt="foto">
 						<div class="card_body">
 							<div class="card_numberOfPhotos">
-								<div v-if="getFoto(chats) != 1" v-for="foto in getFoto(cards)" v-bind:class="activeBand(foto, cards)" v-on:click="choiceFoto(foto)"></div>
+								<div v-for="foto in getFoto(cards)" v-bind:class="activeBand(foto, cards)" v-on:click="choiceFoto(foto)"></div>
 							</div>
 							<div class="card_change">
 								<div class="card_changeBlock card_changeBlock__back" v-on:click="changeFoto(0)">
@@ -112,7 +112,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="control">
+				<div class="control" v-on:keyup="changeCoordinateCard()" autofocus>
 					<button class="control_button" v-on:click="controlPanel()">{{ control.value }}</button>
 					<div class="control_panel" v-if="control.status">
 						<img class="control_img" src="images/control/left.svg" alt="arrow_left">
@@ -130,7 +130,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="chat_window" v-if="page.dialog">
+			<div class="chat_window" v-if="page.dialog && chats">
 				<div class="dialog">
 					<div class="dialog_header">
 						<div class="dialog_headerInfo">
