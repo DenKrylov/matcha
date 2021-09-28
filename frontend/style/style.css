@@ -54,6 +54,11 @@ input:focus {
 	height: 100%;
 }
 
+.chat_window {
+	display: flex;
+	width: 100%;
+}
+
 /* ------------------util------------------------------- */
 
 .close {

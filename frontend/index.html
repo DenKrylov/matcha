@@ -7,6 +7,8 @@
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="style/choice.css">
 	<link rel="stylesheet" href="style/color.css">
+	<link rel="stylesheet" href="style/data.css">
+	<link rel="stylesheet" href="style/dialog.css">
 	<link rel="stylesheet" href="style/nav.css">
 	<link rel="stylesheet" href="style/start.css">
 	<link rel="stylesheet" href="style/style.css">
@@ -46,7 +48,7 @@
 			</div>
 		</div>
 		<div class="pageMain">
-			<div class="nav">
+			<div class="nav_window">
 				<div class="nav_header">
 					<div class="nav_logo" v-on:click="showStartPage()">
 						<img class="nav_logoAvatarka" v-bind:src="user.foto[0]" alt="avatarka">
@@ -85,7 +87,7 @@
 						<img class="card_foto" v-bind:src="cards[0].foto[cards[0].active]" alt="foto">
 						<div class="card_body">
 							<div class="card_numberOfPhotos">
-								<div v-for="foto in getFoto()" v-bind:class="activeBand(foto)" v-on:click="choiceFoto(foto)"></div>
+								<div v-if="getFoto(chats) != 1" v-for="foto in getFoto(cards)" v-bind:class="activeBand(foto, cards)" v-on:click="choiceFoto(foto)"></div>
 							</div>
 							<div class="card_change">
 								<div class="card_changeBlock card_changeBlock__back" v-on:click="changeFoto(0)">
@@ -125,6 +127,75 @@
 						<p class="control_text">СУПЕР ЛАЙК</p>
 						<img class="control_img" src="" alt="" width="80px">
 						<p class="control_text">СЛЕДУЮ</p>
+					</div>
+				</div>
+			</div>
+			<div class="chat_window" v-if="page.dialog">
+				<div class="dialog">
+					<div class="dialog_header">
+						<div class="dialog_headerInfo">
+							<img class="dialog_headerImg" v-bind:src="chats[partner].foto[0]" alt="foto">
+							<p class="dialog_headerText">Вы и {{ chats[partner].name }} образовали пару {{ chats[partner].date }}</p>
+						</div>
+						<img class="close" src="images/close.svg" alt="close" v-on:click="showMain()">
+					</div>
+					<ul class="dialog_body">
+						<li v-for="message in getDialog()" v-bind:class="sortMassage(message.user)">
+							<template v-if="message.user == user.name">
+								<div class="message_lenta">
+									<p class="message_text message_text__my"> {{ message.text }}</p>
+								</div>
+							</template>
+							<template v-else>
+								<img class="message_avatarka" v-bind:src="chats[partner].foto[0]" alt="avatarka">
+								<div class="message_lenta">
+									<p class="message_text message_text__ohter">{{ message.text }}</p>
+								</div>
+							</template>
+						</li>
+					</ul>
+					<div class="dialog_footer">
+						<form  id="dialog_input">
+							<input class="massage_input" type="text" name="message" autocomplete="off" autofocus placeholder="Введите сообщение" v-model="chats[partner].tmpMessage" v-on:keyup.enter="sendMessage()" v-on:keypress.enter.prevent>
+						</form>
+						<input type="submit" form="test" value="ОТПРАВИТЬ" v-bind:class="inputColor()" v-on:click="sendMessage()">
+					</div>
+				</div>
+				<div class="data" v-if="page.dialog">
+					<div class="data_header">
+						<img class="data_headerImg" v-bind:src="chats[partner].foto[chats[partner].active]" alt="foto">
+						<div class="data_headerDiv">
+							<div class="data_numberOfPhotos">
+								<div v-if="getFoto(chats) != 1" v-for="foto in getFoto(chats)" v-bind:class="activeBand(foto, chats)" v-on:click="choiceFoto(foto)"></div>
+							</div>
+							<div class="data_change">
+								<div class="data_changeBlock data_changeBlock__back" v-if="getFoto(chats) != 1" v-on:click="changeFoto(0)">
+									<img class="data_changeDirection" src="images/card/left.svg" alt="backFoto">
+								</div>
+								<div class="data_changeBlock data_changeBlock__next" v-if="getFoto(chats) != 1" v-on:click="changeFoto(1)">
+									<img class="data_changeDirection" src="images/card/right.svg" alt="nextFoto">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="data_body">
+						<div class="data_info">
+							<div class="data_info_header">
+								<p class="data_info_name">{{ chats[partner].name }}</p>
+								<p class="data_info_age">{{ chats[partner].age}}</p>
+							</div>
+							<p class="data_info_text">Живет в {{ chats[partner].city }}</p>
+							<p class="data_info_text">{{ chats[partner].gender }}</p>
+							<p class="data_info_text">С {{ chats[partner].wave }} волны</p>
+						</div>
+						<div class="data_description">
+							<p class="data_description_text">{{ chats[partner].discrpiption }}</p>
+						</div>
+					</div>
+					<div class="data_footer">
+						<!-- v-on:click="deleteUser()" -->
+						<button class="data_footerButton" v-on:click="deleteUser()">УДАЛИТЬ ИЗ ПАР</button>
+						<button class="data_footerButton">ЗАЯВИТЬ</button>
 					</div>
 				</div>
 			</div>

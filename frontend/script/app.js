@@ -1,11 +1,6 @@
 new Vue ({
 	el: ".app",
 	data: {
-		partner: '-1',
-		control: {
-			value: 'СКРЫТЬ',
-			status: true,
-		},
 		page: {
 			start: false,
 			signin: false,
@@ -13,8 +8,14 @@ new Vue ({
 			main: true,
 			сouples: false,
 			chats: true,
-			choice: true,
+			choice: false,
+			dialog: true,
 		},
+		control: {
+			value: 'СКРЫТЬ',
+			status: true,
+		},
+		partner: 0,
 		user: {
 			id: '109',
 			foto: [
@@ -31,7 +32,8 @@ new Vue ({
 		},
 		chats: [
 			{
-				id: '1',
+				id: 1,
+				active: 0,
 				foto: [
 					'foto/ksu.jpg',
 				],
@@ -43,6 +45,7 @@ new Vue ({
 				wave: '6',
 				discrpiption: 'Люблю кататься на сноуборде! :)',
 				date: '11.09.2021',
+				tmpMessage: '',
 				dialog: [
 					{
 						user: 'Денис',
@@ -71,10 +74,12 @@ new Vue ({
 				]
 			},
 			{
-				id: '3',
+				id: 3,
+				active: 0,
 				foto: [
 					'foto/lena00.jpg',
-					'foto/lena01.jpg'
+					'foto/lena01.jpg',
+					'foto/lena02.jpg'
 				],
 				name: 'Лена',
 				age: '21',
@@ -84,6 +89,7 @@ new Vue ({
 				wave: '4',
 				discrpiption: 'Обожаю кошек!',
 				date: '12.09.2021',
+				tmpMessage: '',
 				dialog: [
 					{
 						user: 'Лена',
@@ -108,8 +114,8 @@ new Vue ({
 				]
 			},
 			{
-				id: '10',
-				time: 0,
+				id: 10,
+				active: 0,
 				foto: [
 					'foto/nasty.jpg',
 				],
@@ -121,6 +127,7 @@ new Vue ({
 				wave: '4',
 				discrpiption: 'Шарю в DS',
 				date: '13.09.2021',
+				tmpMessage: '',
 				dialog: [
 					{
 						user: 'Настя',
@@ -180,7 +187,7 @@ new Vue ({
 		],
 		cards: [
 			{
-				id: '230',
+				idUser: '230',
 				active: 0,
 				foto: [
 					'foto/nataliy00.jpg',
@@ -196,10 +203,11 @@ new Vue ({
 				discrpiption: 'Обожаю кошек!',
 			},
 			{
-				id: '230',
+				idUser: '231',
 				active: 0,
 				foto: [
 					'foto/ulia00.jpg',
+					'foto/ulia01.jpg',
 					'foto/ulia01.jpg',
 				],
 				name: 'Юлия',
@@ -221,6 +229,8 @@ new Vue ({
 			this.page.main = false;
 			this.page.сouples = false;
 			this.page.chats = false;
+			this.page.choice = false;
+			this.page.dialog = false;
 		},
 		closeWindow: function() {
 			this.page.signin = false;
@@ -248,6 +258,15 @@ new Vue ({
 			this.closeStart();
 			this.page.main = true;
 			this.page.chats = true;
+			this.page.choice = true;
+			this.page.dialog = false;
+		},
+		showDialog: function() {
+			this.closeStart();
+			this.page.main = true;
+			this.page.chats = true;
+			this.page.choice = false;
+			this.page.dialog = true;
 		},
 		textWindowButton: function() {
 			if(this.page.registration) {
@@ -272,10 +291,16 @@ new Vue ({
 			}
 		},
 		chatActive: function(chat) {
-			this.partner = chat.id;
+			this.showDialog();
+			for(let i = 0; i < this.chats.length; i++) {
+				if(chat.id == this.chats[i].id) {
+					this.partner = i;
+					break;
+				}
+			}
 		},
 		chatActiveClass: function(chat) {
-			if(this.partner == chat.id) {
+			if(chat.id == this.chats[this.partner].id) {
 				return('nav_chat__active');
 			}
 		},
@@ -289,27 +314,82 @@ new Vue ({
 			}
 		},
 		changeFoto: function(num) {
-			console.log(num);
-			if(num == 1 && this.cards[0].foto[this.cards[0].active + 1]) {
-				this.cards[0].activeFoto = this.cards[0].foto[this.cards[0].active++];
-			} else if(num == 0 && this.cards[0].active) {
-				this.cards[0].activeFoto = this.cards[0].foto[this.cards[0].active];
-				this.cards[0].active--;
+			if(this.page.choice) {
+				if(num == 1 && this.cards[0].foto[this.cards[0].active + 1]) {
+					this.cards[0].foto[this.cards[0].active++];
+				} else if(num == 0 && this.cards[0].active) {
+					this.cards[0].foto[this.cards[0].active];
+					this.cards[0].active--;
+				}
+			} else if(this.page.dialog) {
+				if(num == 1 && this.chats[this.partner].foto[this.chats[this.partner].active + 1]) {
+					this.chats[this.partner].active++;
+				} else if(num == 0 && this.chats[this.partner].foto[this.chats[this.partner].active - 1]) {
+					this.chats[this.partner].active--;
+				}
 			}
 		},
-		getFoto: function() {
-			return(this.cards[0].foto.length);
-		},
-		activeBand: function(num) {
-			if(this.cards[0].active == num - 1) {
-				return("card_band card_band__active");
-			} else {
-				return("card_band");
+		getFoto: function(arr) {
+			if(this.page.choice) { 
+				return(arr[0].foto.length);
+			} else if(this.page.dialog) {
+				return(arr[this.partner].foto.length);
 			}
+		},
+		activeBand: function(num, arr) {
+			if (this.page.dialog) {
+				if(arr[this.partner].active == num - 1) {
+					return("card_band card_band__active");
+				} else {
+					return("card_band");
+				}
+			} else if(this.page.choice) {
+				if(arr[0].active == num - 1) {
+					return("card_band card_band__active");
+				} else {
+					return("card_band");
+				}
+			} 
 		},
 		choiceFoto: function(num) {
-			this.cards[0].active = num - 1;
-			console.log(num);
+			if(this.page.choice) {
+				this.cards[0].active = num - 1;
+			} else if(this.page.dialog) {
+				this.chats[this.partner].active = num - 1
+			}
 		},
+		// -----------------------------------------chat------------------------
+		getDialog: function(chats) {
+			return(this.chats[this.partner].dialog);
+		},
+		sortMassage: function(user) {
+			if(user == this.user.name) {
+				return("message message_my");
+			} else {
+				return("message message_ohter");
+			}
+		},
+		sendMessage: function() {
+			let newMessage = {
+				user: this.user.name,
+				text: this.chats[this.partner].tmpMessage,
+				time: new Date().getTime(),
+			};
+			if(this.chats[this.partner].tmpMessage != '' && this.partner.name != '') {
+				this.chats[this.partner].dialog.push(newMessage);
+				this.chats[this.partner].lastMessage = this.chats[this.partner].tmpMessage;
+				this.chats[this.partner].tmpMessage = '';
+			}
+		},
+		inputColor: function() {
+			if(this.chats[this.partner].tmpMessage.length == 0) {
+				return('massage_send');
+			} else {
+				return('massage_send massage_send__active');
+			}
+		},
+		deleteUser: function() {
+			this.chats.splice(this.partner.index, 1);
+		}
 	},
 })
