@@ -79,7 +79,8 @@ new Vue ({
 				foto: [
 					'foto/lena00.jpg',
 					'foto/lena01.jpg',
-					'foto/lena02.jpg'
+					'foto/lena02.jpg',
+					'foto/lena03.jpg'
 				],
 				name: 'Лена',
 				age: '21',
@@ -146,44 +147,41 @@ new Vue ({
 						text: 'Затра!',
 					},
 				]
-			}
-		],
-		couples: [
+			},
 			{
-				id: '10',
+				id: 19,
+				active: 0,
+				foto: [
+					'foto/oly00.jpg'
+				],
 				name: 'Оля',
-				foto: 'foto/oly00.jpg'
+				age: '21',
+				city: 'Moscow',
+				lastMessage: 'Окей',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Шарю в DS',
+				date: '13.09.2021',
+				tmpMessage: '',
+				dialog: []
 			},
 			{
-				id: '11',
+				id: 20,
+				active: 0,
+				foto: [
+					'foto/alina00.jpg',
+				],
 				name: 'Алина',
-				foto: 'foto/alina00.jpg'
+				age: '21',
+				city: 'Moscow',
+				lastMessage: 'Окей',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Шарю в DS',
+				date: '13.09.2021',
+				tmpMessage: '',
+				dialog: []
 			},
-			{
-				id: '12',
-				name: 'Оля',
-				foto: 'foto/oly00.jpg'
-			},
-			{
-				id: '13',
-				name: 'Алина',
-				foto: 'foto/alina00.jpg'
-			},
-			{
-				id: '14',
-				name: 'Оля',
-				foto: 'foto/oly00.jpg'
-			},
-			{
-				id: '15',
-				name: 'Алина',
-				foto: 'foto/alina00.jpg'
-			},
-			{
-				id: '16',
-				name: 'Алина',
-				foto: 'foto/alina00.jpg'
-			}
 		],
 		cards: [
 			{
@@ -268,12 +266,23 @@ new Vue ({
 				this.page.chats = false;
 			} 
 		},
-		showDialog: function() {
+		showDialogChats: function() {
 			this.closeStart();
 			this.page.main = true;
 			this.page.chats = true;
 			this.page.choice = false;
 			this.page.dialog = true;
+			this.page.chats = true;
+			this.page.сouples = false;
+		},
+		showDialogCouples: function() {
+			this.closeStart();
+			this.page.main = true;
+			this.page.chats = true;
+			this.page.choice = false;
+			this.page.dialog = true;
+			this.page.chats = false;
+			this.page.сouples = true;
 		},
 		textWindowButton: function() {
 			if(this.page.registration) {
@@ -297,8 +306,23 @@ new Vue ({
 				return('nav_choiceText__active');
 			}
 		},
+		sortChat: function(chat) {
+			if(chat.dialog.length) {
+				return(true)
+			}
+			return(false)
+		},
 		chatActive: function(chat) {
-			this.showDialog();
+			this.showDialogChats();
+			for(let i = 0; i < this.chats.length; i++) {
+				if(chat.id == this.chats[i].id) {
+					this.partner = i;
+					break;
+				}
+			}
+		},
+		coupleActive: function(chat) {
+			this.showDialogCouples();
 			for(let i = 0; i < this.chats.length; i++) {
 				if(chat.id == this.chats[i].id) {
 					this.partner = i;
