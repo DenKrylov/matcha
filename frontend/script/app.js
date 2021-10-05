@@ -421,15 +421,13 @@ new Vue ({
 		},
 		deleteUser: function() {
 			if(this.chats.length == 1) {
-				console.log(this.chats.length);
 				this.chats.splice(this.partner.index, 1);
 			} else {
 				this.chats.splice(this.partner.index, 1);
 			}
-		},
-		// -----------------------------------------cardMove------------------------
-		changeCoordinateCard: function() {
-			console.log("hil");
+			if(this.chats.length == 0) {
+				this.showMain();
+			}
 		},
 	},
 })

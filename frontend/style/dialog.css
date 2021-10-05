@@ -37,6 +37,7 @@
 	flex: 10 0 auto;
 	display: flex;
 	flex-direction: column;
+	padding: 1rem
 }
 
 .message {
@@ -59,14 +60,13 @@
 .message_avatarka {
 	display: flex;
 	align-self: end;
-	margin: .5rem 0 .5rem 1.5rem ;
 	height: 3rem;
 	width: 3rem;
 	border-radius: 100%;
 }
 
 .message_text {
-	margin: .2rem;
+	margin: .1rem 0;
 	padding: .5rem 1.5rem;
 	user-select: text;
 }
