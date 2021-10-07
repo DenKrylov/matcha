@@ -139,7 +139,7 @@
 						</div>
 						<img class="close" src="images/close.svg" alt="close" v-on:click="showMain()">
 					</div>
-					<ul class="dialog_body">
+					<ul class="dialog_body" @wheel.prevent="wheel">
 						<li v-for="message in getDialog()" v-bind:class="sortMassage(message.user)">
 							<template v-if="message.user == user.name">
 								<div class="message_lenta">

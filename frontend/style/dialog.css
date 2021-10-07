@@ -11,7 +11,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 1.5rem;
-	height: 6rem;
+	min-height: 6rem;
 	border-bottom: 1px solid var(--main-bg-blackout3);
 }
 
@@ -34,7 +34,7 @@
 }
 
 .dialog_body {
-	flex: 10 0 auto;
+	flex: 1 0 auto;
 	display: flex;
 	flex-direction: column;
 	padding: 1rem
@@ -87,14 +87,8 @@
 	border-radius: .3rem 1rem 1rem .3rem;
 }
 
-
-
-
-
-
-
 .dialog_footer {
-	height: 4.5rem;
+	min-height: 4.5rem;
 	border-top: 1px solid var(--main-bg-blackout3);
 	display: flex;
 	align-items: center;

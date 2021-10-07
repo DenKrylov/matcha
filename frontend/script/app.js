@@ -2,6 +2,8 @@ new Vue ({
 	el: ".app",
 	data: {
 		page: {
+			pos: 0,
+			posChat: 24,
 			start: false,
 			signin: false,
 			registration: false,
@@ -49,6 +51,30 @@ new Vue ({
 				dialog: [
 					{
 						user: 'Денис',
+						text: 'Start',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Пойдем кофе пить :)',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Денис',
 						text: 'Привет!',
 					},
 					{
@@ -70,6 +96,150 @@ new Vue ({
 					{
 						user: 'Ксюша',
 						text: 'Пойдем!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Пойдем кофе пить :)',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Пойдем кофе пить :)',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Пойдем кофе пить :)',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Пойдем кофе пить :)',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Пойдем кофе пить :)',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Пойдем!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Ксюша',
+						text: 'Привет!',
+					},
+					{
+						user: 'Денис',
+						text: 'End :)',
 					},
 				]
 			},
@@ -314,6 +484,7 @@ new Vue ({
 		},
 		chatActive: function(chat) {
 			this.showDialogChats();
+			this.page.pos = 0;
 			for(let i = 0; i < this.chats.length; i++) {
 				if(chat.id == this.chats[i].id) {
 					this.partner = i;
@@ -390,9 +561,6 @@ new Vue ({
 			}
 		},
 		// -----------------------------------------chat------------------------
-		getDialog: function(chats) {
-			return(this.chats[this.partner].dialog);
-		},
 		sortMassage: function(user) {
 			if(user == this.user.name) {
 				return("message message_my");
@@ -427,6 +595,23 @@ new Vue ({
 			}
 			if(this.chats.length == 0) {
 				this.showMain();
+			}
+		},
+		// --------------------------------------------- chats-------------------------------
+		wheel: function(ev){
+			if (ev.deltaY < 0 && this.page.pos < 0) {
+				this.page.pos++;
+		  	} else if(ev.deltaY > 0 && this.chats[this.partner].dialog.length - this.page.posChat + this.page.pos) {
+				this.page.pos--;
+		  	}
+			console.log(this.page.pos, this.page.posChat, this.chats[this.partner].dialog.length - this.page.posChat + this.page.pos);
+		},
+		getDialog: function(chats) {
+			let tmp = this.chats[this.partner].dialog.length - this.page.posChat;
+			if(!this.page.pos) {
+				return(this.chats[this.partner].dialog.slice(-this.page.posChat));
+			} else if(tmp + this.page.pos >= 0) {
+				return(this.chats[this.partner].dialog.slice(tmp + this.page.pos, this.page.pos));
 			}
 		},
 	},
