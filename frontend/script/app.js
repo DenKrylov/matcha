@@ -2,8 +2,12 @@ new Vue ({
 	el: ".app",
 	data: {
 		page: {
-			pos: 0,
-			posChat: 24,
+			startChats: 0,
+			amountChats: 10,
+			posChat: 0,
+			pos: 24,
+			posDialog: 0,
+			numChat: 0,
 			start: false,
 			signin: false,
 			registration: false,
@@ -353,263 +357,12 @@ new Vue ({
 				dialog: []
 			},
 			{
-				id: 1,
+				id: 19,
 				active: 0,
 				foto: [
-					'foto/ksu.jpg',
+					'foto/oly00.jpg'
 				],
-				name: 'Ксюша',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '6',
-				discrpiption: 'Люблю кататься на сноуборде! :)',
-				date: '11.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Денис',
-						text: 'Start',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'End :)',
-					},
-				]
-			},
-			{
-				id: 3,
-				active: 0,
-				foto: [
-					'foto/lena00.jpg',
-					'foto/lena01.jpg',
-					'foto/lena02.jpg',
-					'foto/lena03.jpg'
-				],
-				name: 'Лена',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Обожаю кошек!',
-				date: '12.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Лена',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Как дела?',
-					},
-					{
-						user: 'Лена',
-						text: 'Хорошо!',
-					},
-					{
-						user: 'Лена',
-						text: 'Придешь в школу?',
-					},
-				]
-			},
-			{
-				id: 10,
-				active: 0,
-				foto: [
-					'foto/nasty.jpg',
-				],
-				name: 'Настя',
+				name: 'Оля',
 				age: '21',
 				city: 'Moscow',
 				lastMessage: 'Окей',
@@ -618,24 +371,24 @@ new Vue ({
 				discrpiption: 'Шарю в DS',
 				date: '13.09.2021',
 				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Настя',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Когда в школу?',
-					},
-					{
-						user: 'Лена',
-						text: 'Затра!',
-					},
-				]
+				dialog: []
+			},
+			{
+				id: 20,
+				active: 0,
+				foto: [
+					'foto/alina00.jpg',
+				],
+				name: 'Алина',
+				age: '21',
+				city: 'Moscow',
+				lastMessage: 'Окей',
+				gender: 'Женщина',
+				wave: '4',
+				discrpiption: 'Шарю в DS',
+				date: '13.09.2021',
+				tmpMessage: '',
+				dialog: []
 			},
 			{
 				id: 19,
@@ -672,291 +425,6 @@ new Vue ({
 				dialog: []
 			},
 			{
-				id: 1,
-				active: 0,
-				foto: [
-					'foto/ksu.jpg',
-				],
-				name: 'Ксюша',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '6',
-				discrpiption: 'Люблю кататься на сноуборде! :)',
-				date: '11.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Денис',
-						text: 'Start',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'End :)',
-					},
-				]
-			},
-			{
-				id: 3,
-				active: 0,
-				foto: [
-					'foto/lena00.jpg',
-					'foto/lena01.jpg',
-					'foto/lena02.jpg',
-					'foto/lena03.jpg'
-				],
-				name: 'Лена',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Обожаю кошек!',
-				date: '12.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Лена',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Как дела?',
-					},
-					{
-						user: 'Лена',
-						text: 'Хорошо!',
-					},
-					{
-						user: 'Лена',
-						text: 'Придешь в школу?',
-					},
-				]
-			},
-			{
-				id: 10,
-				active: 0,
-				foto: [
-					'foto/nasty.jpg',
-				],
-				name: 'Настя',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Шарю в DS',
-				date: '13.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Настя',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Когда в школу?',
-					},
-					{
-						user: 'Лена',
-						text: 'Затра!',
-					},
-				]
-			},
-			{
 				id: 19,
 				active: 0,
 				foto: [
@@ -991,291 +459,6 @@ new Vue ({
 				dialog: []
 			},
 			{
-				id: 1,
-				active: 0,
-				foto: [
-					'foto/ksu.jpg',
-				],
-				name: 'Ксюша',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '6',
-				discrpiption: 'Люблю кататься на сноуборде! :)',
-				date: '11.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Денис',
-						text: 'Start',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'End :)',
-					},
-				]
-			},
-			{
-				id: 3,
-				active: 0,
-				foto: [
-					'foto/lena00.jpg',
-					'foto/lena01.jpg',
-					'foto/lena02.jpg',
-					'foto/lena03.jpg'
-				],
-				name: 'Лена',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Обожаю кошек!',
-				date: '12.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Лена',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Как дела?',
-					},
-					{
-						user: 'Лена',
-						text: 'Хорошо!',
-					},
-					{
-						user: 'Лена',
-						text: 'Придешь в школу?',
-					},
-				]
-			},
-			{
-				id: 10,
-				active: 0,
-				foto: [
-					'foto/nasty.jpg',
-				],
-				name: 'Настя',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Шарю в DS',
-				date: '13.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Настя',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Когда в школу?',
-					},
-					{
-						user: 'Лена',
-						text: 'Затра!',
-					},
-				]
-			},
-			{
 				id: 19,
 				active: 0,
 				foto: [
@@ -1308,291 +491,6 @@ new Vue ({
 				date: '13.09.2021',
 				tmpMessage: '',
 				dialog: []
-			},
-			{
-				id: 1,
-				active: 0,
-				foto: [
-					'foto/ksu.jpg',
-				],
-				name: 'Ксюша',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '6',
-				discrpiption: 'Люблю кататься на сноуборде! :)',
-				date: '11.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Денис',
-						text: 'Start',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Пойдем кофе пить :)',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Пойдем!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Ксюша',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'End :)',
-					},
-				]
-			},
-			{
-				id: 3,
-				active: 0,
-				foto: [
-					'foto/lena00.jpg',
-					'foto/lena01.jpg',
-					'foto/lena02.jpg',
-					'foto/lena03.jpg'
-				],
-				name: 'Лена',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Обожаю кошек!',
-				date: '12.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Лена',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Как дела?',
-					},
-					{
-						user: 'Лена',
-						text: 'Хорошо!',
-					},
-					{
-						user: 'Лена',
-						text: 'Придешь в школу?',
-					},
-				]
-			},
-			{
-				id: 10,
-				active: 0,
-				foto: [
-					'foto/nasty.jpg',
-				],
-				name: 'Настя',
-				age: '21',
-				city: 'Moscow',
-				lastMessage: 'Окей',
-				gender: 'Женщина',
-				wave: '4',
-				discrpiption: 'Шарю в DS',
-				date: '13.09.2021',
-				tmpMessage: '',
-				dialog: [
-					{
-						user: 'Настя',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Привет!',
-					},
-					{
-						user: 'Денис',
-						text: 'Когда в школу?',
-					},
-					{
-						user: 'Лена',
-						text: 'Затра!',
-					},
-				]
 			},
 			{
 				id: 19,
@@ -1998,7 +896,7 @@ new Vue ({
 		},
 		chatActive: function(chat) {
 			this.showDialogChats();
-			this.page.pos = 0;
+			this.page.posDialog = 0;
 			for(let i = 0; i < this.chats.length; i++) {
 				if(chat.id == this.chats[i].id) {
 					this.partner = i;
@@ -2118,24 +1016,47 @@ new Vue ({
 			}
 		},
 		// --------------------------------------------- chats-------------------------------
-		wheel: function(ev){
-			if (ev.deltaY < 0 && this.page.pos < 0) {
-				this.page.pos++;
-		  	} else if(ev.deltaY > 0 && this.chats[this.partner].dialog.length - this.page.posChat + this.page.pos) {
-				this.page.pos--;
+		wheelDialog: function(ev){
+			if (ev.deltaY < 0 && this.page.posDialog < 0) {
+				this.page.posDialog++;
+		  	} else if(ev.deltaY > 0 && this.chats[this.partner].dialog.length - this.page.pos + this.page.posDialog) {
+				this.page.posDialog--;
 		  	}
-			console.log(this.page.pos, this.page.posChat, this.chats[this.partner].dialog.length - this.page.posChat + this.page.pos);
 		},
 		getDialog: function(chats) {
-			let tmp = this.chats[this.partner].dialog.length - this.page.posChat;
-			if(!this.page.pos) {
-				return(this.chats[this.partner].dialog.slice(-this.page.posChat));
-			} else if(tmp + this.page.pos >= 0) {
-				return(this.chats[this.partner].dialog.slice(tmp + this.page.pos, this.page.pos));
+			let tmp = this.chats[this.partner].dialog.length - this.page.pos;
+			if(!this.page.posDialog) {
+				return(this.chats[this.partner].dialog.slice(-this.page.pos));
+			} else if(tmp + this.page.posDialog >= 0) {
+				return(this.chats[this.partner].dialog.slice(tmp + this.page.posDialog, this.page.posDialog));
 			}
 		},
-		getUser: function(params) {
-			
-		}
+		wheelChats: function(ev){
+			if (ev.deltaY < 0 && this.page.posChat < 0) {
+				this.page.posChat++;
+		  	} else if(ev.deltaY > 0 && this.page.posChat > -this.chats.length + this.page.missed + this.page.amountChats) {
+				this.page.posChat--;
+		  	}
+		},
+		getChats: function() {
+			//govnofunction
+			var missed = 0;
+			var end = this.page.amountChats + 1;
+			for(let i = 0; i < this.chats.length && i < end; i++) {
+				if(this.chats[i].dialog.length == 0) {
+					this.page.missed++;
+				}
+			}
+			for(let i = 0; i < this.chats.length && i < end; i++) {
+				if(this.chats[i].dialog.length == 0) {
+					end++;
+				}
+			}
+			this.page.missed = missed;
+			return(this.chats.slice(this.page.startChats - this.page.posChat, end - this.page.posChat));
+		},
+		getCouples: function() {
+			return(this.chats);
+		},
 	},
 })
